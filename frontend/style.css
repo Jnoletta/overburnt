@@ -12,17 +12,17 @@ body {
     flex-direction: column;
     min-height:100dvh;
     margin:0;
-    cursor: url("/pointers/pointer.png")0 0, auto;
+    cursor: url("pointers/pointer.png")0 0, auto;
 }
 
 .button {
     padding:0.5rem 1rem;
     font-size: 3rem;
     background-color: yellow;
-    border:solid 1px #dab28d;
+    border:solid 5px black;
     border-radius:5px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: #2F2A22;
+    color: black;
     text-transform:uppercase;
 }
 
@@ -31,6 +31,7 @@ body {
     background-color: #FA230F;
     color:#FFEAD6;
     cursor: url("/pointers/cursor.ani")0 0, auto;
+    
 }
 
 .logo {
@@ -169,7 +170,7 @@ footer {
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    background-image: url("/images/background-hero.png");
+    background-image: url("images/background-hero.png");
     background-position: center;
     background-size: cover;
 
