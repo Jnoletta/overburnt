@@ -1,6 +1,8 @@
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const User = require('../models/user');
+const jwt    = require('jsonwebtoken');
+const User   = require('../models/user');
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const inscription = async (req, res) => {
   try {
@@ -8,6 +10,12 @@ const inscription = async (req, res) => {
 
     if (!email || !password) {
       return res.status(400).json({ message: 'Email et mot de passe requis' });
+    }
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ message: 'Adresse email invalide' });
+    }
+    if (password.length < 6) {
+      return res.status(400).json({ message: 'Le mot de passe doit faire au moins 6 caractères' });
     }
 
     const existing = await User.findByEmail(email);
@@ -41,6 +49,9 @@ const connexion = async (req, res) => {
 
     if (!email || !password) {
       return res.status(400).json({ message: 'Email et mot de passe requis' });
+    }
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ message: 'Adresse email invalide' });
     }
 
     const user = await User.findByEmail(email);

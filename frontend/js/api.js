@@ -26,7 +26,7 @@ const isAdmin = () => getUser()?.role === 'admin';
 
 const logout = () => {
   removeToken();
-  window.location.href = '/connexion.html';
+  window.location.href = 'connexion.html';
 };
 
 // ── Fetch authentifié ─────────────────────────────────────────────────────────
@@ -47,13 +47,13 @@ const authFetch = async (endpoint, options = {}) => {
 // Redirige vers connexion si non connecté
 const requireAuth = () => {
   if (!isLoggedIn()) {
-    window.location.href = '/connexion.html';
+    window.location.href = 'connexion.html';
   }
 };
 
 // Redirige vers accueil si non admin
 const requireAdmin = () => {
   if (!isAdmin()) {
-    window.location.href = '/index.html';
+    window.location.href = 'index.html';
   }
 };

@@ -6,6 +6,8 @@
     <title> 🔥 Overburnt 🔥</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/panier.css">
+    
    <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chango&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
@@ -17,7 +19,7 @@
         <nav class="menu">
             <div class="logo-title">
                 <a href="/pages/index.html">
-                    <img class="logo" src="../images/logo_transparent.png" alt="logo d'Overburnt avec un joyeux ordinateur prêt à en découdre avec plaisir pour toujours plus de productivité !"/>
+                    <img class="logo" src="../images/logo.png" alt="logo d'Overburnt avec un joyeux ordinateur prêt à en découdre avec plaisir pour toujours plus de productivité !"/>
                 </a>
                 <h1 class="brand-title">Overburnt™</h1>
             </div>
@@ -46,38 +48,31 @@
                 <a href="#">
                     <span id="cart-count">0</span>
                     <img class="icon" src="data:image/png;base64,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" alt="shopping-cart">
+                    
                 </a>
             </div>
 
         </nav>
     </header>
-    <main id="main-lifestyle">
-        <section id="wrapper-lifestyle">
-            <div id="text-lifestyle">
-                <h1>Your <em>only</em> life partner™</h1>
-                <h2>About us</h2>
-            </div>
-            <img class="img-lifestyle" src="/images/brand_img1.png"/>
+
+    <main>
+    <section class="cart-section">
+        <h1>Mon panier</h1>
+        <p id="empty-cart" style="display:none">Votre panier est vide.</p>
+        <div class="cart-layout">
+        <div id="cart-items"></div>
+        <aside id="cart-summary" style="display:none">
+            <h2>Récapitulatif</h2>
+            <p>Total HT : <span id="total-ht"></span> €</p>
+            <p>TVA : <span id="total-tva"></span> €</p>
+            <p class="total-ttc">Total TTC : <span id="total-ttc"></span> €</p>
+            <button id="btn-checkout">Commander</button>
+        </aside>
+        </div>
         </section>
-            
-        <section class="section-lifestyle">
-            <div class="lifestyle-text">
-                <h2>Our story</h2>
-                 <p>Overburnt™ was founded on a simple observation : somewhere along the way, you stopped being a person and became a function. You optimized. You delivered. You exceeded expectations — and in doing so, raised them. You made yourself indispensable, which is another word for trapped.
-We thought that deserved a label.
-We are not a wellness brand. Wellness brands want you to slow down. We know you won't. We are not a streetwear brand. Streetwear brands want you to stand out. You want to survive.
-We are something else entirely.
-A brand for the highly functional and quietly unraveling. For those who have turned their exhaustion into identity and their anxiety into a morning routine. For those who have read every book about work-life balance and used the time to get more work done.
-Our products don't fix anything. They don't claim to. They reflect, with complete accuracy, the life you have chosen to live. Or the life that has chosen you. The distinction stopped mattering around year three.
-We believe work is not what you do. Work is what you are. We know this because you told us. Every time you introduced yourself by your job title. Every Sunday you spent preparing for Monday. Every vacation you didn't take. Every one you took and spent working.
-You built this.
-                We dressed it.</p>
-                <h3>Overburnt™. For those still existing.</h3>
-            </div>
-            <img src="/images/lifestyle_img3.png" alt="">
-        </section>
-        
     </main>
+
+ 
     
     <footer>
         <img id="footer-logo" src="../images/logo_transparent.png" alt="">
@@ -97,6 +92,10 @@ You built this.
         </div>
 
     </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/panier.js"></script>
+    <script src="../js/panier-page.js"></script>
     <script src="../js/cursor.js"></script>
 </body>
 </html>
