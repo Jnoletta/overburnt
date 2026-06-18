@@ -6,6 +6,8 @@
     <title> 🔥 Overburnt 🔥</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/compte.css">
+    
    <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chango&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
@@ -13,7 +15,7 @@
 </head>
 <body>
 
-    <header>
+<header>
         <nav class="menu">
             <div class="logo-title">
                 <a href="index.html">
@@ -49,12 +51,55 @@
                 </a>
             </div>
 
+
         </nav>
     </header>
-    <main>
-        
-    </main>
-    
+
+
+<main>
+  <section class="compte-section">
+    <div class="compte-tabs">
+      <button class="tab-btn active" data-tab="profil">Mes informations</button>
+      <button class="tab-btn" data-tab="commandes">Mes commandes</button>
+    </div>
+
+    <div id="tab-profil" class="tab-content">
+      <h2>Mes informations</h2>
+      <form id="form-profil">
+        <input type="text" id="name"        placeholder="Nom"         />
+        <input type="text" id="surname"     placeholder="Prénom"      />
+        <input type="text" id="street"      placeholder="Rue"         />
+        <input type="text" id="city"        placeholder="Ville"       />
+        <input type="text" id="postal_code" placeholder="Code postal" />
+        <input type="text" id="country"     placeholder="Pays"        />
+        <input type="tel"  id="phone"       placeholder="Téléphone"   />
+        <button type="submit" id="btn-save">Enregistrer</button>
+        <p id="profil-message"></p>
+      </form>
+
+      <div class="password-section">
+        <h3>Changer de mot de passe</h3>
+        <form id="form-password">
+          <input type="password" id="current-password" placeholder="Mot de passe actuel"    />
+          <input type="password" id="new-password"     placeholder="Nouveau mot de passe"   />
+          <input type="password" id="confirm-password" placeholder="Confirmer le mot de passe" />
+          <button type="submit">Mettre à jour</button>
+          <p id="password-message"></p>
+        </form>
+      </div>
+    </div>
+
+    <div id="tab-commandes" class="tab-content" style="display:none">
+      <h2>Mes commandes</h2>
+      <div id="orders-list">
+        <p id="orders-loading">Chargement...</p>
+      </div>
+    </div>
+
+    <button id="btn-logout">Se déconnecter</button>
+  </section>
+</main>
+
     <footer>
         <img id="footer-logo" src="../images/logo_transparent.png" alt="">
         <p>Quand on touche le fond, on ne peut que remonter ! 🤓</p>
@@ -71,8 +116,11 @@
                 <a href="/pages/marque.html">À propos</a>
             </div>
         </div>
-    </footer>
 
+    </footer>
+    <script src="../js/api.js"></script>
+    <script src="../js/panier.js"></script>
+    <script src="../js/compte.js"></script>
     <script src="../js/cursor.js"></script>
 </body>
 </html>

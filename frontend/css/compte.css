@@ -1,0 +1,79 @@
+/* ── Page compte ─────────────────────────────────────────────── */
+.compte-section {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.compte-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.tab-btn {
+  padding: 10px 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+}
+
+.tab-btn.active {
+  border-bottom-color: currentColor;
+  font-weight: 600;
+}
+
+/* ── Formulaire profil ───────────────────────────────────────── */
+#form-profil, #form-password {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 480px;
+}
+
+#form-profil input, #form-password input {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.password-section {
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* ── Commandes ───────────────────────────────────────────────── */
+.order-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.order-id    { font-weight: 600; }
+.order-date  { color: #888; font-size: 0.9rem; }
+
+.order-status {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.status-en_attente     { background: #fff3cd; color: #856404; }
+.status-en_preparation { background: #cce5ff; color: #004085; }
+.status-expediee       { background: #d4edda; color: #155724; }
+.status-livree         { background: #d1e7dd; color: #0f5132; }
+.status-annulee        { background: #f8d7da; color: #721c24; }

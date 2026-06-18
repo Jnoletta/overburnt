@@ -30,6 +30,12 @@ const create = async (req, res) => {
     if (!name || price === undefined || stock === undefined) {
       return res.status(400).json({ message: 'Nom, prix et stock requis' });
     }
+    if (price <= 0) {
+  return res.status(400).json({ message: 'Le prix doit être supérieur à 0' });
+  }
+  if (stock < 0) {
+  return res.status(400).json({ message: 'Le stock ne peut pas être négatif' });
+  }
 
     const id      = await Product.create({ name, slug, category, price, taux_tva, stock, image_url, description });
     const product = await Product.findById(id);
@@ -75,4 +81,14 @@ const remove = async (req, res) => {
   }
 };
 
-module.exports = { getAll, getOne, create, update, remove };
+const getAllAdmin = async (req, res) => {
+  try {
+    const products = await Product.findAllAdmin();
+    res.json(products);
+  } catch (err) {
+    console.error('Erreur getAllAdmin :', err);
+    res.status(500).json({ message: 'Erreur serveur' });
+  }
+};
+
+module.exports = { getAll, getOne, create, update, remove, getAllAdmin };

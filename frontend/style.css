@@ -12,7 +12,6 @@ body {
     flex-direction: column;
     min-height:100dvh;
     margin:0;
-    cursor: url("pointers/pointer.png")0 0, auto;
 }
 
 .button {

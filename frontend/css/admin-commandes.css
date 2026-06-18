@@ -1,0 +1,53 @@
+/* ── Admin commandes ─────────────────────────────────────────── */
+.admin-order-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.admin-order-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  flex-wrap: wrap;
+}
+
+.admin-order-header .order-id { font-weight: 600; }
+.admin-order-header .order-total { margin-left: auto; font-weight: 600; }
+
+.select-status {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.select-status.status-en_attente     { background: #fff3cd; }
+.select-status.status-en_preparation { background: #cce5ff; }
+.select-status.status-expediee       { background: #d4edda; }
+.select-status.status-livree         { background: #d1e7dd; }
+.select-status.status-annulee        { background: #f8d7da; }
+
+.order-detail-panel {
+  padding: 16px 20px;
+  background: #f8f9fa;
+  border-top: 1px solid #e0e0e0;
+}
+
+.order-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+}
+
+.order-items-table th,
+.order-items-table td {
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.order-items-table th { font-weight: 600; }
+.order-total-line { font-size: 1.1rem; margin-top: 8px; }

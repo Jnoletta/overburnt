@@ -42,4 +42,11 @@ const remove = async (id) => {
   return result.affectedRows;
 };
 
-module.exports = { findAll, findById, create, update, remove };
+const findAllAdmin = async () => {
+  const [rows] = await pool.query(
+    'SELECT * FROM products ORDER BY created_at DESC'
+  );
+  return rows;
+};
+
+module.exports = { findAll, findById, create, update, remove, findAllAdmin };
