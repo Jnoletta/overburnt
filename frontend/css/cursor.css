@@ -8,12 +8,7 @@
   pointer-events: none; /* ne bloque pas les clics */
   z-index: 9999;
   transform: translate(0%, 0%);
-
-  /* Ton visuel de curseur — à remplacer par ton image */
-  /* background: #FFE800;
-  border: 2px solid #111;
-  clip-path: polygon(0 0, 60% 0, 100% 40%, 60% 40%, 60% 100%, 0 100%); */
-  background-image: url("../pointers/pointer.png");
+  background-image: url("../images/pointers/pointer.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -26,7 +21,7 @@
 
 .custom-cursor.is-hovering {
   animation: cursor-back-forth 0.25s step-end infinite;
- background-image: url("../pointers/pointer.png");
+ background-image: url("../images/pointers/pointer.png");
   background-size: contain;
   background-repeat: no-repeat;
 }

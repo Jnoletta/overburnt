@@ -28,7 +28,10 @@ const loadProducts = async () => {
     container.innerHTML = products.map((p) => renderRow(p)).join('');
 
     container.querySelectorAll('.btn-edit').forEach((btn) => {
-      btn.addEventListener('click', () => fillForm(JSON.parse(btn.dataset.product)));
+      btn.addEventListener('click', () => {
+        const product = products.find((p) => p.id === parseInt(btn.dataset.id));
+        fillForm(product);
+      });
     });
 
     container.querySelectorAll('.btn-delete').forEach((btn) => {
@@ -61,7 +64,7 @@ const renderRow = (p) => {
         <span class="status-badge">${p.is_active ? 'Actif' : 'Inactif'}</span>
       </div>
       <div class="admin-product-actions">
-        <button class="btn-edit"   data-product='${JSON.stringify(p)}'>Modifier</button>
+        <button class="btn-edit"   data-id="${p.id}">Modifier</button>
         <button class="btn-toggle" data-id="${p.id}" data-active="${p.is_active}">${p.is_active ? 'Désactiver' : 'Activer'}</button>
         <button class="btn-delete" data-id="${p.id}">Supprimer</button>
       </div>
@@ -88,23 +91,6 @@ const handleSubmit = async (e) => {
   const productId = document.getElementById('product-id').value;
   message.textContent = '';
   btn.disabled        = true;
-
-const price   = parseFloat(document.getElementById('price').value);
-const stock   = parseInt(document.getElementById('stock').value);
-const taux_tva = parseFloat(document.getElementById('taux_tva').value);
-
-if (price <= 0) {
-  message.textContent = 'Le prix doit être supérieur à 0';
-  message.style.color = 'red';
-  btn.disabled = false;
-  return;
-}
-if (stock < 0) {
-  message.textContent = 'Le stock ne peut pas être négatif';
-  message.style.color = 'red';
-  btn.disabled = false;
-  return;
-}
 
   try {
     let imageUrl = null;
@@ -233,7 +219,17 @@ const toggleActive = async (id, currentActive) => {
     // Envoyer le produit complet avec is_active modifié
     const res = await authFetch(`/products/${id}`, {
       method: 'PUT',
-      body: JSON.stringify({ ...product, is_active: currentActive ? 0 : 1 }),
+      body: JSON.stringify({
+        name:        product.name,
+        slug:        product.slug,
+        category:    product.category,
+        price:       product.price,
+        taux_tva:    product.taux_tva,
+        stock:       product.stock,
+        description: product.description,
+        image_url:   product.image_url,
+        is_active:   currentActive ? 0 : 1,
+      }),
     });
     if (res.ok) await loadProducts();
   } catch (err) {

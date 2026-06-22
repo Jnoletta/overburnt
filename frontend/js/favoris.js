@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  requireAuth();
   await loadFavoris();
 });
 
@@ -9,10 +8,15 @@ const loadFavoris = async () => {
   const empty   = document.getElementById('favoris-empty');
 
   try {
-    const res       = await authFetch('/favorites');
-    const favorites = await res.json();
-    console.log('statut:', res.status);
-    console.log('favoris reçus:', favorites);
+    let favorites;
+
+    if (isLoggedIn()) {
+      const res = await authFetch('/favorites');
+      favorites = await res.json();
+    } else {
+      // Favoris invite stockes en localStorage (donnees produit completes)
+      favorites = getLocalFavorites();
+    }
 
     loading.style.display = 'none';
 
@@ -24,7 +28,9 @@ const loadFavoris = async () => {
     grid.innerHTML = favorites.map((product) => renderCard(product)).join('');
 
     grid.querySelectorAll('.btn-remove-fav').forEach((btn) => {
-      btn.addEventListener('click', () => removeFavori(parseInt(btn.dataset.id), btn));
+      const productId = parseInt(btn.dataset.id);
+      const product    = favorites.find((p) => p.id === productId);
+      btn.addEventListener('click', () => removeFavori(product, btn));
     });
 
   } catch (err) {
@@ -40,12 +46,14 @@ const renderCard = (product) => {
     ? `http://localhost:3000${product.image_url}`
     : '../images/placeholder.png';
 
+  const prixTTC = (product.price * (1 + product.taux_tva / 100)).toFixed(2);
+
   return `
     <article class="product-card" data-id="${product.id}">
       <a href="produit-detail.html?id=${product.id}">
         <img src="${imageUrl}" alt="${product.name}" />
         <h3>${product.name}</h3>
-        <p class="product-price">${parseFloat(product.price).toFixed(2)} €</p>
+        <p class="product-price">${prixTTC} €</p>
       </a>
       <button class="btn-remove-fav" data-id="${product.id}">
         ✕ Retirer des favoris
@@ -54,19 +62,21 @@ const renderCard = (product) => {
   `;
 };
 
-// ── Supprimer un favori ───────────────────────────────────────────────────────
+// ── Supprimer un favori (connecte ou invite) ──────────────────────────────────
 
-const removeFavori = async (productId, btn) => {
+const removeFavori = async (product, btn) => {
   try {
-    const res = await authFetch(`/favorites/${productId}`, { method: 'DELETE' });
-    if (res.ok) {
-      const card = btn.closest('.product-card');
-      card.remove();
+    await toggleFavorite(product, true); // true = actuellement favori -> on retire
 
-      // Afficher message vide si plus aucun favori
-      if (!document.querySelectorAll('.product-card').length) {
-        document.getElementById('favoris-empty').style.display = 'block';
-      }
+    const card = btn.closest('.product-card');
+    card.remove();
+
+    if (typeof setFavoriteIconState === 'function' && !isLoggedIn()) {
+      setFavoriteIconState(getLocalFavorites().length > 0);
+    }
+
+    if (!document.querySelectorAll('.product-card').length) {
+      document.getElementById('favoris-empty').style.display = 'block';
     }
   } catch (err) {
     console.error('Erreur suppression favori :', err);

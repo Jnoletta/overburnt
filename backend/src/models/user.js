@@ -36,6 +36,14 @@ const updatePassword = async (id, hashedPassword) => {
   return result.affectedRows;
 };
 
+const updateRole = async (id, role) => {
+  const [result] = await pool.query(
+    'UPDATE users SET role = ?, updated_at = NOW() WHERE id = ?',
+    [role, id]
+  );
+  return result.affectedRows;
+};
+
 const remove = async (id) => {
   const conn = await pool.getConnection();
   await conn.beginTransaction();
@@ -74,4 +82,4 @@ const remove = async (id) => {
   }
 };
 
-module.exports = { findByEmail, findById, create, findAll, updatePassword, remove };
+module.exports = { findByEmail, findById, create, findAll, updatePassword, updateRole, remove };

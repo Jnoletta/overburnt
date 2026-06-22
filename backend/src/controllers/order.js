@@ -64,6 +64,11 @@ const createOrder = async (req, res) => {
     res.status(201).json({ message: 'Commande créée', order });
   } catch (err) {
     console.error('Erreur createOrder :', err);
+
+    if (err.message && err.message.startsWith('Stock insuffisant')) {
+      return res.status(409).json({ message: 'Stock insuffisant, la commande a été annulée. Veuillez réessayer.' });
+    }
+
     res.status(500).json({ message: 'Erreur serveur' });
   }
 };

@@ -1,0 +1,627 @@
+* {
+    margin:0;
+    font-family: league spartan, "sans serif";
+}
+
+body {
+    background-color: #FA230F;
+    color: #FFEAD6;
+    font-family: League Spartan;
+    background-image: url("../images/background-essai.png");
+    background-size: repeat;
+    display: flex;
+    flex-direction: column;
+    min-height:100dvh;
+    margin:0;
+}
+
+/* main {
+    display: flex;
+    justify-content: center;
+    margin-left:auto;
+    margin-right: auto;
+} */
+
+.button {
+    padding:0.5rem 1rem;
+    font-size: 3rem;
+    background-color: yellow;
+    border:solid 5px black;
+    border-radius:5px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: black;
+    text-transform:uppercase;
+}
+
+/* .button:hover {
+    opacity:1;
+    background-color: #FA230F;
+    color:#FFEAD6;
+    cursor: url("/pointers/cursor.ani")0 0, auto;
+    
+} */
+
+@keyframes blink-shop {
+  0%, 49% {
+    background-color: #FFE800;
+    color: #000;
+    border-color: #000;
+  }
+  50%, 100% {
+    background-color: #FA230F;
+    color: #fff;
+    border-color: #000000;
+  }
+}
+
+.button {
+  animation: blink-shop 0.5s step-end infinite;
+}
+
+.logo {
+    width:50px;
+    margin-left: 0.5rem;
+}
+
+.brand-title {
+    text-transform: uppercase;
+}
+
+a {
+    color: #FFEAD6;
+    font-size: 2 rem;
+    font-family: 'League Spartan', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-decoration: none;
+    flex-direction: row;
+    padding: 10px 0px;
+}
+
+main {
+    min-height: 100vh;
+}
+
+.main-page-wrapper {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    /* min-height:100vh */
+    /* min-height:100vh; */
+    position:relative;
+    z-index:1;
+    margin-top:-60px;
+}
+
+
+/* navbar */
+nav {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items:center;
+    position:relative;
+    z-index:10;
+    min-height: 40px;
+    height:65px;
+    padding: 6px 0;
+    background-color: rgb(255, 0, 0) ;
+    border: dashed 6px #F5F0E8;
+}
+
+.menu {
+    display:flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon {
+    width: 60px;
+    margin-top: 0;
+}
+
+
+
+.logo-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+
+.overburnt-title {
+    font-family: League Spartan;
+    font-weight: 900;
+}
+
+.main-menu {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    font-size: 1.5rem;
+}
+
+.client-menu {
+    display:flex;
+    flex-direction: row;
+    gap: 3rem;
+    margin-right: 0.5rem;
+}
+
+.client-menu a :hover, a:hover {
+    opacity:0.75;
+}
+
+.nav-icon-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.icon-label {
+  font-size: 0.9rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.icon-wrapper {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  bottom: 0px;
+  right: 6px;
+  background: rgb(28, 179, 23);
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.cart-badge.hidden {
+  display: none;
+}
+
+
+
+/* Footer section  */
+footer {
+    min-height: 250px;
+    background-color: rgb(17, 16, 16);
+    display: flex;
+    flex-direction: row;
+    /* padding: 3rem; */
+    justify-content: space-around;
+    align-items: center;
+    border-top: dashed  10px #FFEAD6;
+}
+
+#footer-links {
+    display: flex;
+    flex-direction: row;
+    gap: 6rem;
+
+}
+
+#footer-links a {
+    color:white;
+}
+
+#footer-logo {
+    width: 200px;
+    height: 200px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+
+
+
+
+/* Connexion & Inscription Form */
+.auth-section {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  border: 5px dashed #FFEAD6;
+  border-radius: 12px;
+  padding: 40px;
+}
+
+.auth-card h1 {
+  font-size: 4rem;
+  margin-bottom: 28px;
+  text-align: center;
+  font-family: chango;
+}
+
+#form-connexion,
+#form-inscription {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#form-connexion input,
+#form-inscription input {
+  padding: 12px 16px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#form-connexion input:focus,
+#form-inscription input:focus {
+  outline: none;
+  border-color: #98a59f;
+}
+
+#form-connexion button[type="submit"],
+#form-inscription button[type="submit"] {
+  padding: 13px;
+  margin-top: 4px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  font-family: league spartan;
+}
+
+#form-connexion button[type="submit"]:hover,
+#form-inscription button[type="submit"]:hover {
+    background-color: #FFE800;
+}
+
+#error-message {
+  font-size: 0.875rem;
+  color: rgb(0, 0, 0);
+  min-height: 20px;
+  text-align: center;
+}
+
+.auth-redirect {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.auth-redirect a {
+  color: inherit;
+  font-weight: 600;
+}
+
+/* page lifestyle */
+
+#main-lifestyle {
+    display: flex;
+    flex-direction: column;
+}
+#wrapper-lifestyle {
+    display: flex;
+    flex-direction: row-reverse;
+    /* justify-content: center;
+    align-items: center; */
+     border-bottom: dashed 10px #FFEAD6 ;
+}
+
+.img-lifestyle {
+    max-height:100vh;
+}
+
+#wrapper-lifestyle h1 {
+    font-size: 3rem;
+}
+
+#text-lifestyle {
+    display: flex;
+    flex-direction: column-reverse;
+    position:relative;
+    right:52px;
+    top:-120px;
+}
+
+#wrapper-lifestyle h2 {
+    font-size: 7.6rem;
+    font-family:chango;
+}
+
+.section-lifestyle {
+    display:grid;
+    grid-template-columns: 1fr 1.5fr;
+    background-color: #FFEAD6;
+    min-height:700px;
+    max-height:850px;
+    background-image: url("images/bg_section2.jpg");
+    color:#FA230F;
+    align-items: center;
+    margin:0;
+    border-bottom: dashed  10px #FA230F ;
+    border-top: dashed  10px #FA230F ;
+}
+
+.lifestyle-text {
+    width:80%;
+    display:flex;
+    flex-direction: column;
+    margin: 0 auto;
+    gap:1rem;
+}
+
+.lifestyle-text h2 {
+    font-size: 4rem;
+    font-family: chango;
+}
+
+#lifestyle-team {
+    font-size: 4rem;
+    margin-left:auto;
+    font-family: "Jersey 10";
+
+}
+
+.lifestyle-text p {
+    font-size : 1.2rem;
+}
+
+.section-lifestyle img{
+    width:100%
+}
+
+#section-brand {
+    min-height: 700px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    background-color: #FA230F;
+    
+}
+
+#brand-column-left {
+    display:flex;
+    flex-direction: column;
+    max-width: 75%;
+    
+    gap:1rem;
+    order:1;
+}
+
+#brand-column-left h2 {
+    font-size: 6rem;
+}
+
+#brand-column-left p {
+    font-size: 2rem;
+}
+
+#section-brand img {
+    width: 500px
+
+}
+
+#brand-column-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25%;
+}
+
+
+/* ════════════════════════════════════════════════════════════════
+   RESPONSIVE — à ajouter à la fin de global.css
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── Tablette (≤ 1024px) ─────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .main-menu {
+    gap: 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  .client-menu {
+    gap: 1.5rem;
+  }
+
+  #section-brand,
+  .section-lifestyle {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  #brand-column-left {
+    max-width: 100%;
+    order: 2;
+    text-align: center;
+    align-items: center;
+  }
+
+  #brand-column-right {
+    margin-left: 0;
+    order: 1;
+  }
+
+  #brand-column-left h2 {
+    font-size: 3.5rem;
+  }
+
+  #brand-column-left p {
+    font-size: 1.3rem;
+  }
+
+  #section-brand img {
+    width: 280px;
+  }
+}
+
+/* ── Mobile large (≤ 768px) ──────────────────────────────────── */
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: auto;
+    padding: 10px 0;
+    gap: 10px;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+  }
+
+  .main-menu {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .client-menu {
+    gap: 1rem;
+    margin-right: 0;
+  }
+
+  .icon {
+    width: 40px;
+  }
+
+  .icon-label {
+    font-size: 0.7rem;
+  }
+
+  .main-page-wrapper {
+    grid-template-columns: 1fr;
+    margin-top: 0;
+  }
+
+  .auth-card {
+    padding: 24px;
+  }
+
+  .auth-card h1 {
+    font-size: 2.5rem;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 24px;
+    padding: 32px 20px;
+    min-height: auto;
+    text-align: center;
+  }
+
+  #footer-links {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  #footer-logo {
+    width: 120px;
+    height: 120px;
+  }
+
+  #wrapper-lifestyle {
+    flex-direction: column;
+    border-bottom: dashed 6px #FFEAD6;
+  }
+
+  #text-lifestyle {
+    position: static;
+    right: 0;
+    top: 0;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  #wrapper-lifestyle h1 {
+    font-size: 1.8rem;
+  }
+
+  #wrapper-lifestyle h2 {
+    font-size: 3rem;
+  }
+
+  .lifestyle-text {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .lifestyle-text h2 {
+    font-size: 2.5rem;
+  }
+
+  #lifestyle-team {
+    font-size: 2.5rem;
+    margin-left: 0;
+  }
+}
+
+/* ── Mobile (≤ 480px) ────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .logo {
+    width: 36px;
+  }
+
+  .brand-title {
+    font-size: 1rem;
+  }
+
+  .main-menu {
+    gap: 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .client-menu {
+    gap: 0.6rem;
+  }
+
+  .icon {
+    width: 32px;
+  }
+
+  .auth-card h1 {
+    font-size: 2rem;
+  }
+
+  #form-connexion input,
+  #form-inscription input {
+    font-size: 1rem;
+    padding: 10px 12px;
+  }
+
+  #brand-column-left h2 {
+    font-size: 2.2rem;
+  }
+
+  #brand-column-left p {
+    font-size: 1.1rem;
+  }
+
+  #section-brand img {
+    width: 200px;
+  }
+}

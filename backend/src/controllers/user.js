@@ -74,4 +74,28 @@ const remove = async (req, res) => {
   }
 };
 
-module.exports = { getMyAccount, updatePassword, getAllUsers, remove };
+const updateRole = async (req, res) => {
+  try {
+    const { role } = req.body;
+    const userId    = parseInt(req.params.id);
+
+    if (!['customer', 'admin'].includes(role)) {
+      return res.status(400).json({ message: 'Rôle invalide. Valeurs acceptées : customer, admin' });
+    }
+    if (userId === req.user.id) {
+      return res.status(400).json({ message: 'Impossible de modifier son propre rôle' });
+    }
+
+    const affected = await User.updateRole(userId, role);
+    if (!affected) {
+      return res.status(404).json({ message: 'Utilisateur introuvable' });
+    }
+
+    res.json({ message: 'Rôle mis à jour' });
+  } catch (err) {
+    console.error('Erreur updateRole :', err);
+    res.status(500).json({ message: 'Erreur serveur' });
+  }
+};
+
+module.exports = { getMyAccount, updatePassword, getAllUsers, remove, updateRole };

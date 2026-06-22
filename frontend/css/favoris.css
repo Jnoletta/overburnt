@@ -1,3 +1,27 @@
+/* ── Page favoris ────────────────────────────────────────────── */
+.favoris-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.favoris-section h1 {
+  margin-bottom: 32px;
+}
+
+#favoris-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+}
+
+#favoris-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* ── Bouton retirer ──────────────────────────────────────────── */
 .btn-remove-fav {
   width: 100%;
   padding: 10px;
@@ -5,6 +29,23 @@
   border-top: 1px solid #e0e0e0;
   cursor: pointer;
   color: #999;
+  background: white;
 }
 
-.btn-remove-fav:hover { color: #e00; }
+.btn-remove-fav:hover {
+  color: #e00;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  #favoris-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  #favoris-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

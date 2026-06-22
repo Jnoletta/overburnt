@@ -1,3 +1,21 @@
+/* ── Carte produit : restreindre le style flottant à ce contexte ── */
+.product-card .btn-favorite {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.product-card .btn-favorite.active {
+  color: red;
+}
+
 /* ── Détail produit ──────────────────────────────────────────── */
 .product-detail-content {
   display: grid;
@@ -8,58 +26,84 @@
   padding: 0 20px;
 }
 
+.product-detail-image {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: black;
+}
+
 .product-detail-image img {
+  display: block;
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 8px;
 }
 
-.price-ttc   { font-size: 1.6rem; font-weight: 700; }
-.price-ht    { font-size: 0.85rem; color: #888; }
-.in-stock    { color: green; }
-.out-of-stock { color: red; }
+.product-detail-info h1 {
+  font-family: chango;
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
 
-.quantity-selector {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.product-detail-price {
   margin-bottom: 16px;
 }
 
-.quantity-selector input {
-  width: 60px;
-  padding: 8px;
-  text-align: center;
+.price-ttc {
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: 'League Spartan';
 }
 
-.back-link {
+.product-detail-description {
+  font-family: 'League Spartan';
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.product-stock {
+  font-family: 'League Spartan';
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.in-stock {
+  color: #ffffff;
+}
+
+.out-of-stock {
   display: inline-block;
-  margin: 24px 20px;
-  text-decoration: none;
+  color: #000;
+  background: #FFEAD6;
+  padding: 4px 12px;
+  border-radius: 4px;
 }
 
-@media (max-width: 768px) {
-  .product-detail-content {
-    grid-template-columns: 1fr;
-  }
+.product-detail-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
 .quantity-selector {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 16px;
 }
 
 .btn-qty {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1px solid #ccc;
+  border: 2px solid black;
+  background-color: #e0e0e0;
   font-size: 1.2rem;
+  font-weight: 700;
   cursor: pointer;
-  background: white;
 }
 
 .btn-qty:disabled {
@@ -68,8 +112,47 @@
 }
 
 #quantity-display {
+  font-family: 'League Spartan';
+  font-weight: 700;
   font-size: 1.1rem;
-  font-weight: 600;
   min-width: 20px;
   text-align: center;
+}
+
+/* Bouton favori en pleine largeur sur la page détail (texte + icône) */
+.product-detail-info .btn-favorite {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid black;
+  background-color: #e0e0e0;
+  font-family: 'League Spartan';
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.product-detail-info .btn-favorite.active {
+  background-color: #3d3d3d;
+  color: #FFEAD6;
+}
+
+.back-link {
+  display: inline-block;
+  margin: 24px 20px;
+  font-family: 'League Spartan';
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+#btn-add-cart {
+  font-size: 1.2rem;
+  font-family: league spartan;
+  background-color: yellow;
+  padding: 20px 10px;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .product-detail-content {
+    grid-template-columns: 1fr;
+  }
 }

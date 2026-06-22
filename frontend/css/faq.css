@@ -1,0 +1,61 @@
+/* ── FAQ ──────────────────────────────────────────────────────── */
+
+main h1 {
+    font-size: 4rem;
+    font-family: chango;
+    text-align: center;
+}
+
+.faq-section {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.faq-intro {
+  color: white;
+  margin-bottom: 40px;
+  margin-top: 32px;
+  font-style: italic;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  padding: 16px 20px;
+  background-color: rgb(17, 16, 16)
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: '+';
+  float: right;
+  font-weight: 400;
+}
+
+.faq-item[open] summary::after {
+  content: '−';
+}
+
+.faq-item p {
+  margin-top: 12px;
+  line-height: 1.6;
+  color: #dddddd;
+}

@@ -1,26 +1,28 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  const grid            = document.getElementById('products-grid');
-  const loadingMessage  = document.getElementById('loading-message');
-  const emptyMessage    = document.getElementById('empty-message');
+  const grid           = document.getElementById('products-grid');
+  const loadingMessage = document.getElementById('loading-message');
+  const emptyMessage   = document.getElementById('empty-message');
 
   let userFavorites = [];
 
-  // Récupérer les favoris de l'utilisateur connecté
+  // Recuperer les favoris (connecte = API, invite = localStorage)
   if (isLoggedIn()) {
     try {
       const res = await authFetch('/favorites');
       if (res.ok) {
-        const data  = await res.json();
+        const data    = await res.json();
         userFavorites = data.map((f) => f.id);
       }
     } catch {
-      // Non bloquant — les favoris resteront non marqués
+      // Non bloquant
     }
+  } else {
+    userFavorites = getLocalFavorites().map((p) => p.id);
   }
 
-  // Récupérer les produits
+  // Recuperer les produits
   try {
-    const res = await authFetch('/products');
+    const res      = await authFetch('/products');
     const products = await res.json();
 
     loadingMessage.style.display = 'none';
@@ -36,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     grid.querySelectorAll('.btn-cart').forEach((btn) => {
       btn.addEventListener('click', () => {
         const productId = parseInt(btn.dataset.id);
-        const product   = products.find((p) => p.id === productId);
+        const product    = products.find((p) => p.id === productId);
         addToCart(product);
         btn.textContent = 'Ajouté ✓';
         setTimeout(() => (btn.textContent = 'Ajouter au panier'), 1500);
@@ -45,7 +47,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Boutons favoris
     grid.querySelectorAll('.btn-favorite').forEach((btn) => {
-      btn.addEventListener('click', () => handleFavorite(btn));
+      btn.addEventListener('click', () => {
+        const productId = parseInt(btn.dataset.id);
+        const product    = products.find((p) => p.id === productId);
+        handleFavorite(btn, product);
+      });
     });
 
   } catch (err) {
@@ -57,15 +63,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 // ── Rendu d'une carte produit ─────────────────────────────────────────────────
 
 const renderCard = (product, favorites) => {
-  const isFav      = favorites.includes(product.id);
-  const imageUrl   = product.image_url ? `http://localhost:3000${product.image_url}` : '../images/placeholder.png';
+  const isFav    = favorites.includes(product.id);
+  const imageUrl = product.image_url
+    ? `http://localhost:3000${product.image_url}`
+    : '../images/placeholder.png';
+
+  const prixTTC = (product.price * (1 + product.taux_tva / 100)).toFixed(2);
 
   return `
     <article class="product-card" data-id="${product.id}">
       <a href="produit-detail.html?id=${product.id}">
         <img src="${imageUrl}" alt="${product.name}" />
         <h3>${product.name}</h3>
-        <p class="product-price">${parseFloat(product.price).toFixed(2)} €</p>
+        <p class="product-price">${prixTTC} €</p>
       </a>
       <button class="btn-cart" data-id="${product.id}">
         Ajouter au panier
@@ -77,25 +87,23 @@ const renderCard = (product, favorites) => {
   `;
 };
 
-// ── Gestion des favoris ───────────────────────────────────────────────────────
+// ── Gestion des favoris (connecte ou invite) ──────────────────────────────────
 
-const handleFavorite = async (btn) => {
-  if (!isLoggedIn()) {
-    window.location.href = 'connexion.html';
-    return;
-  }
-
-  const productId = parseInt(btn.dataset.id);
-  const isFav     = btn.dataset.fav === 'true';
-  const method    = isFav ? 'DELETE' : 'POST';
+const handleFavorite = async (btn, product) => {
+  const isFav = btn.dataset.fav === 'true';
 
   try {
-    const res = await authFetch(`/favorites/${productId}`, { method });
-    if (res.ok) {
-      const newFav      = !isFav;
-      btn.dataset.fav   = newFav;
-      btn.textContent   = newFav ? '♥' : '♡';
-      btn.classList.toggle('active', newFav);
+    const newFav = await toggleFavorite(product, isFav);
+
+    btn.dataset.fav  = newFav;
+    btn.textContent  = newFav ? '♥' : '♡';
+    btn.classList.toggle('active', newFav);
+
+    if (typeof setFavoriteIconState === 'function') {
+      const remaining = isLoggedIn()
+        ? null // l'icone est mise a jour via API dans navbar.js si besoin
+        : getLocalFavorites().length > 0;
+      if (!isLoggedIn()) setFavoriteIconState(remaining);
     }
   } catch (err) {
     console.error('Erreur favori :', err);

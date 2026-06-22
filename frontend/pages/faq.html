@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> 🔥 Overburnt 🔥</title>
-    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/faq.css">
+    <link rel="stylesheet" href="../css/cursor.css">
    <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chango&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
@@ -35,45 +36,132 @@
             </div>
 
             <div class="client-menu">
-                <a href="favoris.html">
-                    <img class="icon" src="../images/icons/icon_favorite_empty.png" alt="hearts">
+                <a href="connexion.html" id="nav-account-link" class="nav-icon-link">
+                    <img id="nav-account-icon" class="icon" src="../images/icons/icon_not_connected.png" alt="compte" />
+                    <span class="icon-label" id="nav-account-label">Connexion</span>
                 </a>
 
-                <a href="compte.html">
-                    <img class="icon" src="../images/icons/icon_not_connected.png" alt="face-with-rolling-eyes-icon">
+                <a href="favoris.html" id="nav-favorite-link" class="nav-icon-link">
+                    <img id="nav-favorite-icon" class="icon" src="../images/icons/icon_favorite_empty.png" alt="favoris" />
+                    <span class="icon-label">Favoris</span>
                 </a>
 
-                <a href="panier.html">
-                    <span id="cart-count">0</span>
-                    <img class="icon" src="../images/icons/icon_cart_empty.png" alt="shopping-cart">
+                <a href="panier.html" id="nav-cart-link" class="nav-icon-link">
+                    <div class="icon-wrapper">
+                        <img id="nav-cart-icon" class="icon" src="../images/icons/icon_cart_empty.png" alt="panier" />
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </div>
+                    <span class="icon-label">Panier</span>
                 </a>
             </div>
 
 
         </nav>
+        <nav id="admin-menu" style="display:none">
+            <a href="admin/produits.html">Produits</a>
+            <a href="admin/commandes.html">Commandes</a>
+            <a href="admin/utilisateurs.html">Utilisateurs</a>
+        </nav>
     </header>
-    <main>
-        
-    </main>
+<main>
+  <section class="faq-section">
+    <h1>Foire aux questions</h1>
+    <p class="faq-intro">Parce que même la productivité a ses zones d'ombre.</p>
+
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary>Combien de temps pour recevoir ma commande ?</summary>
+        <p>
+          Nos délais de livraison s'inspirent directement de notre politique RH :
+          on vous dit "bientôt", et on espère que vous n'insisterez pas trop.
+          En réalité, comptez 3 à 5 jours ouvrés.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Puis-je retourner un article ?</summary>
+        <p>
+          Oui, vous disposez de 14 jours pour changer d'avis — un luxe que peu
+          d'entre nous ont eu en acceptant ce poste. L'article doit être renvoyé
+          dans son état d'origine, non porté, non lavé de ses larmes.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Vos produits sont-ils vraiment confortables ?</summary>
+        <p>
+          Autant que peut l'être votre situation professionnelle actuelle.
+          On a quand même fait l'effort de choisir des matières douces — un effort
+          que votre dernier manager n'a jamais fait pour vous.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Mes informations de paiement sont-elles sécurisées ?</summary>
+        <p>
+          Oui, contrairement à votre stabilité émotionnelle au travail, vos données
+          bancaires sont entre de bonnes mains. Le paiement est géré par Stripe,
+          on ne stocke jamais vos coordonnées.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Qui est Kevin ?</summary>
+        <p>
+          Kevin est notre assistant virtuel. Il croit sincèrement à l'équilibre
+          vie professionnelle/vie personnelle. Nous, on n'a pas eu le cœur de
+          le contredire.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Puis-je supprimer mon compte ?</summary>
+        <p>
+          Bien sûr — c'est même la seule démission que l'on vous laissera réussir
+          du premier coup. Rendez-vous dans votre espace compte.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Overburnt, c'est sérieux ou c'est de l'humour ?</summary>
+        <p>
+          Les deux. Comme votre dernier point d'équipe "rapide, promis".
+          On prend le burnout au sérieux, et l'autodérision encore plus.
+        </p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Comment vous contacter en cas de problème ?</summary>
+        <p>
+          Via notre page contact — on répond plus vite que votre service RH,
+          c'est à peu près la seule promesse qu'on peut tenir à 100%.
+        </p>
+      </details>
+
+    </div>
+  </section>
+</main>
     
     <footer>
         <img id="footer-logo" src="../images/logo_transparent.png" alt="">
         <p>Quand on touche le fond, on ne peut que remonter ! 🤓</p>
         <div id="footer-links">
             <div class="footer-column">
-                <a href="/pages/faq.html">FAQ</a>
-                <a href="/pages/termes-legaux.html">Legal terms</a>
-                <a href="/pages/contact.html">Contact</a>
-                <a href="/pages/service-client.html">Service Client</a>
+                <a href="faq.html">FAQ</a>
+                <a href="termes-legaux.html">Termes légaux</a>
             </div>
             <div class="footer-column">
-                <a href="/pages/produits.html">Produits</a>
-                <a href="/pages/lifestyle.html">Lifestyle</a>
-                <a href="/pages/marque.html">À propos</a>
+                <a href="produits.html">Produits</a>
+                <a href="lifestyle.html">Lifestyle</a>
+                <a href="marque.html">À propos</a>
             </div>
         </div>
-
     </footer>
+    
+    <script src="../js/api.js"></script>
+    <script src="../js/panier.js"></script>
+    <script src="../js/navbar.js"></script>
     <script src="../js/cursor.js"></script>
 </body>
 </html>

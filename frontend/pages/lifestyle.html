@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> 🔥 Overburnt 🔥</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/lifestyle.css">
     <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/cursor.css">
    <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chango&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
@@ -35,24 +36,34 @@
             </div>
 
             <div class="client-menu">
-                <a href="favoris.html">
-                    <img class="icon" src="../images/icons/icon_favorite_empty.png" alt="hearts">
+                <a href="connexion.html" id="nav-account-link" class="nav-icon-link">
+                    <img id="nav-account-icon" class="icon" src="../images/icons/icon_not_connected.png" alt="compte" />
+                    <span class="icon-label" id="nav-account-label">Connexion</span>
                 </a>
 
-                <a href="compte.html">
-                    <img class="icon" src="../images/icons/icon_not_connected.png" alt="face-with-rolling-eyes-icon">
+                <a href="favoris.html" id="nav-favorite-link" class="nav-icon-link">
+                    <img id="nav-favorite-icon" class="icon" src="../images/icons/icon_favorite_empty.png" alt="favoris" />
+                    <span class="icon-label">Favoris</span>
                 </a>
 
-                <a href="panier.html">
-                    <span id="cart-count">0</span>
-                    <img class="icon" src="../images/icons/icon_cart_empty.png" alt="shopping-cart">
+                <a href="panier.html" id="nav-cart-link" class="nav-icon-link">
+                    <div class="icon-wrapper">
+                        <img id="nav-cart-icon" class="icon" src="../images/icons/icon_cart_empty.png" alt="panier" />
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </div>
+                    <span class="icon-label">Panier</span>
                 </a>
             </div>
 
 
         </nav>
+        <nav id="admin-menu" style="display:none">
+            <a href="admin/produits.html">Produits</a>
+            <a href="admin/commandes.html">Commandes</a>
+            <a href="admin/utilisateurs.html">Utilisateurs</a>
+        </nav>
     </header>
-    <main id="main-lifestyle">
+    <main class="main-page-wrapper" id="main-lifestyle">
         <section id="wrapper-lifestyle">
             <div id="text-lifestyle">
                 <h1>The <em>only</em> lifestyle™</h1>
@@ -64,15 +75,15 @@
         <section class="section-lifestyle">
             <div class="lifestyle-text">
                 <h2>This isn't the life you chose, but it's the one you deserve :)</h2>
-                 <p>You wake up before your alarm. Not because you're excited. Because rest has become something that happens to other people.
-             You have goals. The goals have deadlines. The deadlines have feelings about you.
-             This is your lifestyle. We didn't build it — we just made it wearable.
-Overburnt™ exists for those who have confused movement with meaning, and decided to lean in anyway. For those who check emails at dinner, at the gym, mid-conversation, mid-sentence, mid-thought. For those who have stopped finishing their sentences because something more urgent arrived.
-Our products don't promise balance. Balance is a metric you stopped tracking somewhere between Q3 and your last holiday, which you spent working.
-We believe in human potential. We believe in extracting it efficiently. We consider these the same thing.
-You are not burned out. You are highly engaged. You are not anxious. You are performance-ready. You are not losing yourself. You are optimizing yourself.
-Your wardrobe should reflect that. Professionally.
-                Welcome to the team.</p>
+                 <p>Vous vous réveillez avant votre réveil. Pas parce que vous êtes impatient. Parce que le repos est devenu quelque chose qui arrive aux autres.
+                Vous avez des objectifs. Les objectifs ont des délais. Les délais ont une dent contre vous.
+                C'est votre mode de vie. On ne l'a pas inventé — on l'a juste rendu portable.
+                Overburnt™ existe pour ceux qui ont confondu mouvement et sens, et qui ont décidé de foncer quand même. Pour ceux qui consultent leurs mails au dîner, à la salle, en pleine conversation, en pleine phrase, en pleine pensée. Pour ceux qui ont arrêté de finir leurs phrases parce que quelque chose de plus urgent est arrivé.
+                Nos produits ne promettent pas l'équilibre. L'équilibre est un indicateur que vous avez arrêté de suivre quelque part entre le T3 et vos dernières vacances — que vous avez passées à travailler.
+                On croit au potentiel humain. On croit à son extraction efficace. Pour nous, c'est la même chose.
+                Vous n'êtes pas épuisé. Vous êtes hautement engagé. Vous n'êtes pas anxieux. Vous êtes prêt à performer. Vous ne vous perdez pas. Vous vous optimisez.
+                Votre garde-robe devrait refléter ça. Professionnellement.
+                Bienvenue dans l'équipe.</p>
                 <h3 id="lifestyle-team">The team is permanent.</h3>
             </div>
             <img src="../images/lifestyle_img3.png" alt="">
@@ -85,19 +96,20 @@ Your wardrobe should reflect that. Professionally.
         <p>Quand on touche le fond, on ne peut que remonter ! 🤓</p>
         <div id="footer-links">
             <div class="footer-column">
-                <a href="/pages/faq.html">FAQ</a>
-                <a href="/pages/termes-legaux.html">Legal terms</a>
-                <a href="/pages/contact.html">Contact</a>
-                <a href="/pages/service-client.html">Service Client</a>
+                <a href="faq.html">FAQ</a>
+                <a href="termes-legaux.html">Termes légaux</a>
             </div>
             <div class="footer-column">
-                <a href="/pages/produits.html">Produits</a>
-                <a href="/pages/lifestyle.html">Lifestyle</a>
-                <a href="/pages/marque.html">À propos</a>
+                <a href="produits.html">Produits</a>
+                <a href="lifestyle.html">Lifestyle</a>
+                <a href="marque.html">À propos</a>
             </div>
         </div>
-
     </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/panier.js"></script>
+    <script src="../js/navbar.js"></script>
     <script src="../js/cursor.js"></script>
 </body>
 </html>

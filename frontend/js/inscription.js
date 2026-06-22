@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       setToken(data.token);
+      await syncLocalFavoritesToAccount();
       window.location.href = 'index.html';
     } catch (err) {
       errorMessage.textContent = 'Impossible de contacter le serveur';

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> 🔥 Overburnt 🔥</title>
-    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/panier.css">
+    <link rel="stylesheet" href="../css/cursor.css">
     
    <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,21 +37,30 @@
             </div>
 
             <div class="client-menu">
-                <a href="favoris.html">
-                    <img class="icon" src="../images/icons/icon_favorite_empty.png" alt="hearts">
+                <a href="connexion.html" id="nav-account-link" class="nav-icon-link">
+                    <img id="nav-account-icon" class="icon" src="../images/icons/icon_not_connected.png" alt="compte" />
+                    <span class="icon-label" id="nav-account-label">Connexion</span>
                 </a>
 
-                <a href="compte.html">
-                    <img class="icon" src="../images/icons/icon_not_connected.png" alt="face-with-rolling-eyes-icon">
+                <a href="favoris.html" id="nav-favorite-link" class="nav-icon-link">
+                    <img id="nav-favorite-icon" class="icon" src="../images/icons/icon_favorite_empty.png" alt="favoris" />
+                    <span class="icon-label">Favoris</span>
                 </a>
 
-                <a href="panier.html">
-                    <span id="cart-count">0</span>
-                    <img class="icon" src="../images/icons/icon_cart_empty.png" alt="shopping-cart">
+                <a href="panier.html" id="nav-cart-link" class="nav-icon-link">
+                    <div class="icon-wrapper">
+                        <img id="nav-cart-icon" class="icon" src="../images/icons/icon_cart_empty.png" alt="panier" />
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </div>
+                    <span class="icon-label">Panier</span>
                 </a>
             </div>
 
-
+        </nav>
+        <nav id="admin-menu" style="display:none">
+            <a href="admin/produits.html">Produits</a>
+            <a href="admin/commandes.html">Commandes</a>
+            <a href="admin/utilisateurs.html">Utilisateurs</a>
         </nav>
     </header>
 
@@ -79,22 +88,20 @@
         <p>Quand on touche le fond, on ne peut que remonter ! 🤓</p>
         <div id="footer-links">
             <div class="footer-column">
-                <a href="/pages/faq.html">FAQ</a>
-                <a href="/pages/termes-legaux.html">Legal terms</a>
-                <a href="/pages/contact.html">Contact</a>
-                <a href="/pages/service-client.html">Service Client</a>
+                <a href="faq.html">FAQ</a>
+                <a href="termes-legaux.html">Termes légaux</a>
             </div>
             <div class="footer-column">
-                <a href="/pages/produits.html">Produits</a>
-                <a href="/pages/lifestyle.html">Lifestyle</a>
-                <a href="/pages/marque.html">À propos</a>
+                <a href="produits.html">Produits</a>
+                <a href="lifestyle.html">Lifestyle</a>
+                <a href="marque.html">À propos</a>
             </div>
         </div>
-
     </footer>
 
     <script src="../js/api.js"></script>
     <script src="../js/panier.js"></script>
+    <script src="../js/navbar.js"></script>
     <script src="../js/panier-page.js"></script>
     <script src="../js/cursor.js"></script>
 </body>

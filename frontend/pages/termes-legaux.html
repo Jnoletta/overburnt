@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> 🔥 Overburnt 🔥</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/termes-legaux.css">
     <link rel="stylesheet" href="../css/global.css">
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chango&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/cursor.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chango&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -35,44 +36,139 @@
             </div>
 
             <div class="client-menu">
-                <a href="favoris.html">
-                    <img class="icon" src="../images/icons/icon_favorite_empty.png" alt="hearts">
+                <a href="connexion.html" id="nav-account-link" class="nav-icon-link">
+                    <img id="nav-account-icon" class="icon" src="../images/icons/icon_not_connected.png" alt="compte" />
+                    <span class="icon-label" id="nav-account-label">Connexion</span>
                 </a>
 
-                <a href="compte.html">
-                    <img class="icon" src="../images/icons/icon_not_connected.png" alt="face-with-rolling-eyes-icon">
+                <a href="favoris.html" id="nav-favorite-link" class="nav-icon-link">
+                    <img id="nav-favorite-icon" class="icon" src="../images/icons/icon_favorite_empty.png" alt="favoris" />
+                    <span class="icon-label">Favoris</span>
                 </a>
 
-                <a href="panier.html">
-                    <span id="cart-count">0</span>
-                    <img class="icon" src="../images/icons/icon_cart_empty.png" alt="shopping-cart">
+                <a href="panier.html" id="nav-cart-link" class="nav-icon-link">
+                    <div class="icon-wrapper">
+                        <img id="nav-cart-icon" class="icon" src="../images/icons/icon_cart_empty.png" alt="panier" />
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </div>
+                    <span class="icon-label">Panier</span>
                 </a>
             </div>
-
+        </nav>
+        <nav id="admin-menu" style="display:none">
+            <a href="admin/produits.html">Produits</a>
+            <a href="admin/commandes.html">Commandes</a>
+            <a href="admin/utilisateurs.html">Utilisateurs</a>
         </nav>
     </header>
-    <main>
-        
-    </main>
+<main>
+  <section class="legal-section">
+    <h1>Termes légaux</h1>
+
+    <article>
+      <h2>1. Éditeur du site</h2>
+      <p>
+        Le site Overburnt est édité par [Nom / Raison sociale], [statut juridique],
+        immatriculé(e) sous le numéro SIRET [numéro], dont le siège est situé
+        [adresse complète].
+      </p>
+      <p>Directeur de la publication : [Nom Prénom]</p>
+      <p>Contact : [email de contact]</p>
+    </article>
+
+    <article>
+      <h2>2. Hébergement</h2>
+      <p>
+        Ce site est hébergé par [Nom de l'hébergeur], [adresse de l'hébergeur].
+      </p>
+    </article>
+
+    <article>
+      <h2>3. Propriété intellectuelle</h2>
+      <p>
+        L'ensemble des contenus présents sur ce site (textes, images, logos, slogans,
+        identité visuelle) est la propriété exclusive d'Overburnt, sauf mention contraire.
+        Toute reproduction, distribution ou utilisation sans autorisation préalable est interdite.
+      </p>
+    </article>
+
+    <article>
+      <h2>4. Données personnelles</h2>
+      <p>
+        Les informations collectées lors de la création d'un compte ou d'une commande
+        (nom, email, adresse) sont utilisées uniquement dans le cadre du fonctionnement
+        du site (gestion de compte, traitement des commandes, livraison).
+      </p>
+      <p>
+        Conformément au Règlement Général sur la Protection des Données (RGPD), vous
+        disposez d'un droit d'accès, de rectification et de suppression de vos données
+        personnelles. Pour exercer ce droit, contactez-nous à [email de contact].
+      </p>
+    </article>
+
+    <article>
+      <h2>5. Cookies</h2>
+      <p>
+        Ce site utilise des cookies techniques nécessaires à son bon fonctionnement
+        (gestion de session, panier d'achat). Aucun cookie publicitaire ou de tracking
+        tiers n'est utilisé.
+      </p>
+    </article>
+
+    <article>
+      <h2>6. Paiement et transactions</h2>
+      <p>
+        Les paiements effectués sur ce site sont traités de manière sécurisée par Stripe.
+        Overburnt ne stocke aucune information bancaire.
+      </p>
+    </article>
+
+    <article>
+      <h2>7. Responsabilité</h2>
+      <p>
+        Overburnt s'efforce d'assurer l'exactitude des informations diffusées sur ce site,
+        mais ne peut garantir l'absence d'erreurs ou d'omissions. L'utilisateur reconnaît
+        utiliser ce site sous sa propre responsabilité.
+      </p>
+    </article>
+
+    <article>
+      <h2>8. Droit applicable</h2>
+      <p>
+        Les présentes mentions légales sont soumises au droit français. En cas de litige,
+        et après tentative de résolution amiable, les tribunaux français seront seuls compétents.
+      </p>
+    </article>
+
+    <article>
+      <h2>9. Contact</h2>
+      <p>
+        Pour toute question relative à ces termes légaux, vous pouvez nous contacter à
+        [email de contact].
+      </p>
+    </article>
+  </section>
+</main>
     
     <footer>
         <img id="footer-logo" src="../images/logo_transparent.png" alt="">
         <p>Quand on touche le fond, on ne peut que remonter ! 🤓</p>
         <div id="footer-links">
             <div class="footer-column">
-                <a href="/pages/faq.html">FAQ</a>
-                <a href="/pages/termes-legaux.html">Legal terms</a>
-                <a href="/pages/contact.html">Contact</a>
-                <a href="/pages/service-client.html">Service Client</a>
+                <a href="faq.html">FAQ</a>
+                <a href="termes-legaux.html">Termes légaux</a>
             </div>
             <div class="footer-column">
-                <a href="/pages/produits.html">Produits</a>
-                <a href="/pages/lifestyle.html">Lifestyle</a>
-                <a href="/pages/marque.html">À propos</a>
+                <a href="produits.html">Produits</a>
+                <a href="lifestyle.html">Lifestyle</a>
+                <a href="marque.html">À propos</a>
             </div>
         </div>
     </footer>
 
+    <script src="../js/api.js"></script>
+    <script src="../js/panier.js"></script>
+    <script src="../js/navbar.js"></script>
     <script src="../js/cursor.js"></script>
 </body>
 </html>

@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> 🔥 Overburnt 🔥</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/marque.css">
     <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/cursor.css">
    <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chango&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
@@ -35,23 +36,33 @@
             </div>
 
             <div class="client-menu">
-                <a href="favoris.html">
-                    <img class="icon" src="../images/icons/icon_favorite_empty.png" alt="hearts">
+                <a href="connexion.html" id="nav-account-link" class="nav-icon-link">
+                    <img id="nav-account-icon" class="icon" src="../images/icons/icon_not_connected.png" alt="compte" />
+                    <span class="icon-label" id="nav-account-label">Connexion</span>
                 </a>
 
-                <a href="compte.html">
-                    <img class="icon" src="../images/icons/icon_not_connected.png" alt="face-with-rolling-eyes-icon">
+                <a href="favoris.html" id="nav-favorite-link" class="nav-icon-link">
+                    <img id="nav-favorite-icon" class="icon" src="../images/icons/icon_favorite_empty.png" alt="favoris" />
+                    <span class="icon-label">Favoris</span>
                 </a>
 
-                <a href="panier.html">
-                    <span id="cart-count">0</span>
-                    <img class="icon" src="../images/icons/icon_cart_empty.png" alt="shopping-cart">
+                <a href="panier.html" id="nav-cart-link" class="nav-icon-link">
+                    <div class="icon-wrapper">
+                        <img id="nav-cart-icon" class="icon" src="../images/icons/icon_cart_empty.png" alt="panier" />
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </div>
+                    <span class="icon-label">Panier</span>
                 </a>
             </div>
 
         </nav>
+        <nav id="admin-menu" style="display:none">
+            <a href="admin/produits.html">Produits</a>
+            <a href="admin/commandes.html">Commandes</a>
+            <a href="admin/utilisateurs.html">Utilisateurs</a>
+        </nav>
     </header>
-    <main id="main-lifestyle">
+    <main class="main-page-wrapper" id="main-lifestyle">
         <section id="wrapper-lifestyle">
             <div id="text-lifestyle">
                 <h1>Your <em>only</em> life partner™</h1>
@@ -63,16 +74,12 @@
         <section class="section-lifestyle">
             <div class="lifestyle-text">
                 <h2>Our story</h2>
-                 <p>Overburnt™ was founded on a simple observation : somewhere along the way, you stopped being a person and became a function. You optimized. You delivered. You exceeded expectations — and in doing so, raised them. You made yourself indispensable, which is another word for trapped.
-We thought that deserved a label.
-We are not a wellness brand. Wellness brands want you to slow down. We know you won't. We are not a streetwear brand. Streetwear brands want you to stand out. You want to survive.
-We are something else entirely.
-A brand for the highly functional and quietly unraveling. For those who have turned their exhaustion into identity and their anxiety into a morning routine. For those who have read every book about work-life balance and used the time to get more work done.
-Our products don't fix anything. They don't claim to. They reflect, with complete accuracy, the life you have chosen to live. Or the life that has chosen you. The distinction stopped mattering around year three.
-We believe work is not what you do. Work is what you are. We know this because you told us. Every time you introduced yourself by your job title. Every Sunday you spent preparing for Monday. Every vacation you didn't take. Every one you took and spent working.
-You built this.
-                We dressed it.</p>
-                <h3>Overburnt™. For those still existing.</h3>
+                 <p>Overburnt™ est née d'un constat : à un moment, sans vraiment vous en rendre compte, vous avez arrêté d'être quelqu'un pour devenir quelque chose qui fonctionne. Vous avez optimisé, livré, dépassé les attentes — et chaque fois que vous les dépassiez, vous les remontiez d'un cran. À force de vous rendre indispensable, vous vous êtes simplement piégé vous-même. On a trouvé que ça méritait un nom.
+                    On n'est pas une marque de bien-être : elles veulent vous voir ralentir, et on sait très bien que vous ne ralentirez pas. On n'est pas non plus une marque de streetwear : elles veulent que vous vous démarquiez, alors que vous, tout ce que vous voulez, c'est tenir. On fait autre chose. Une marque pour ceux qui tiennent parfaitement la route en apparence, et qui se défont en silence à l'intérieur. Pour ceux qui ont fait de leur épuisement une identité, et de leur anxiété une routine du matin. Pour ceux qui ont lu tous les livres sur l'équilibre vie pro / vie perso — et qui ont mis ce temps de lecture à profit pour avancer un dossier.
+                    Nos produits ne réparent rien, et ils ne le prétendent pas. Ils se contentent de refléter, fidèlement, la vie que vous avez choisi de mener. Ou celle qui vous a choisi — la nuance a fini par ne plus avoir d'importance, quelque part autour de la troisième année.
+                    Pour nous, le travail n'est pas quelque chose que vous faites. C'est quelque chose que vous êtes. On le sait parce que vous nous l'avez montré : à chaque fois que vous vous êtes présenté par votre poste plutôt que par votre prénom, à chaque dimanche passé à préparer le lundi, à chaque vacance que vous n'avez pas prise — et à chaque vacance que vous avez prise, en continuant de travailler quand même.
+                    Vous avez construit tout ça. On s'est juste occupés de l'habillage.</p>
+                <h3>Overburnt™. Pour ceux qui font semblant d'exister.</h3>
             </div>
             <img src="../images/lifestyle_img3.png" alt="">
         </section>
@@ -84,19 +91,20 @@ You built this.
         <p>Quand on touche le fond, on ne peut que remonter ! 🤓</p>
         <div id="footer-links">
             <div class="footer-column">
-                <a href="/pages/faq.html">FAQ</a>
-                <a href="/pages/termes-legaux.html">Legal terms</a>
-                <a href="/pages/contact.html">Contact</a>
-                <a href="/pages/service-client.html">Service Client</a>
+                <a href="faq.html">FAQ</a>
+                <a href="termes-legaux.html">Termes légaux</a>
             </div>
             <div class="footer-column">
-                <a href="/pages/produits.html">Produits</a>
-                <a href="/pages/lifestyle.html">Lifestyle</a>
-                <a href="/pages/marque.html">À propos</a>
+                <a href="produits.html">Produits</a>
+                <a href="lifestyle.html">Lifestyle</a>
+                <a href="marque.html">À propos</a>
             </div>
         </div>
-
     </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/panier.js"></script>
+    <script src="../js/navbar.js"></script>
     <script src="../js/cursor.js"></script>
 </body>
 </html>
