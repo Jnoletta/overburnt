@@ -1,5 +1,3 @@
-/* ── Page produits ───────────────────────────────────────────── */
-
 h2 {
   text-align: center;
   font-size: 4rem;
@@ -19,7 +17,7 @@ h2 {
   gap: 32px;
 }
 
-/* ── Card ────────────────────────────────────────────────────── */
+/*  Card  */
 .product-card {
   position: relative;
   display: flex;
@@ -53,7 +51,7 @@ h2 {
   font-weight: 600;
 }
 
-/* ── Boutons ─────────────────────────────────────────────────── */
+/* Boutons  */
 .btn-cart {
   width: 100%;
   padding: 12px;
@@ -82,7 +80,7 @@ h2 {
   color: red;
 }
 
-/* ── Responsive ──────────────────────────────────────────────── */
+/* Responsive  */
 @media (max-width: 768px) {
   #products-grid {
     grid-template-columns: repeat(2, 1fr);

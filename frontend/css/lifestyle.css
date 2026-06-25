@@ -73,11 +73,7 @@
     width:100%
 }
 
-/* ════════════════════════════════════════════════════════════════
-   RESPONSIVE — à ajouter à la fin de lifestyle.css
-   ════════════════════════════════════════════════════════════════ */
-
-/* ── Tablette (≤ 1024px) ─────────────────────────────────────── */
+/* Tablette (≤ 1024px)  */
 @media (max-width: 1024px) {
   .section-lifestyle {
     grid-template-columns: 1fr;
@@ -103,7 +99,7 @@
   }
 }
 
-/* ── Mobile large (≤ 768px) ──────────────────────────────────── */
+/*  Mobile large (≤ 768px) */
 @media (max-width: 768px) {
   #wrapper-lifestyle {
     flex-direction: column;

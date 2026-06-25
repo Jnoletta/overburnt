@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('image').addEventListener('change', previewImage);
 });
 
-// ── Chargement des produits ───────────────────────────────────────────────────
+// Chargement des produits
 
 const loadProducts = async () => {
   const container = document.getElementById('products-list');
@@ -48,7 +48,7 @@ const loadProducts = async () => {
   }
 };
 
-// ── Rendu d'une ligne produit ─────────────────────────────────────────────────
+// Rendu d'une ligne produit
 
 const renderRow = (p) => {
   const imageUrl = p.image_url
@@ -72,7 +72,7 @@ const renderRow = (p) => {
   `;
 };
 
-// ── Aperçu image ──────────────────────────────────────────────────────────────
+// Aperçu image
 
 const previewImage = (e) => {
   const file    = e.target.files[0];
@@ -82,7 +82,7 @@ const previewImage = (e) => {
   preview.innerHTML = `<img src="${url}" alt="Aperçu" style="max-width:200px;margin-top:8px;" />`;
 };
 
-// ── Soumission formulaire ─────────────────────────────────────────────────────
+// Soumission formulaire
 
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -160,7 +160,7 @@ const handleSubmit = async (e) => {
   }
 };
 
-// ── Remplir le formulaire pour modification ───────────────────────────────────
+// Remplir le formulaire pour modification
 
 const fillForm = (product) => {
   document.getElementById('product-id').value   = product.id;
@@ -183,7 +183,7 @@ const fillForm = (product) => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
-// ── Réinitialiser le formulaire ───────────────────────────────────────────────
+// Réinitialiser le formulaire
 
 const resetForm = () => {
   document.getElementById('form-produit').reset();
@@ -195,7 +195,7 @@ const resetForm = () => {
   document.getElementById('form-message').textContent      = '';
 };
 
-// ── Supprimer ─────────────────────────────────────────────────────────────────
+// Supprimer 
 
 const deleteProduct = async (id) => {
   if (!confirm('Supprimer ce produit définitivement ?')) return;
@@ -208,7 +208,7 @@ const deleteProduct = async (id) => {
   }
 };
 
-// ── Activer / Désactiver ──────────────────────────────────────────────────────
+// Activer / Désactiver
 
 const toggleActive = async (id, currentActive) => {
   try {

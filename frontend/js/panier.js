@@ -1,4 +1,4 @@
-// ── Panier (localStorage) ─────────────────────────────────────────────────────
+// Panier (localStorage)
 
 const getCart = () => {
   return JSON.parse(localStorage.getItem('cart') || '[]');
@@ -84,7 +84,7 @@ const updateCartCount = () => {
 
 document.addEventListener('DOMContentLoaded', updateCartCount);
 
-// ── Favoris invité (localStorage) ─────────────────────────────────────────────
+// Favoris invité (localStorage)
 
 const getLocalFavorites = () => {
   return JSON.parse(localStorage.getItem('favorites') || '[]');
@@ -114,7 +114,7 @@ const clearLocalFavorites = () => {
   localStorage.removeItem('favorites');
 };
 
-// ── Toggle unifié (gere connecte / invite automatiquement) ────────────────────
+// Toggle unifié (gère connecté / invité automatiquement)
 
 const toggleFavorite = async (product, currentState) => {
   if (isLoggedIn()) {
@@ -146,7 +146,7 @@ const checkIsFavorite = async (productId) => {
   return isLocalFavorite(productId);
 };
 
-// ── Synchronisation a la connexion ────────────────────────────────────────────
+// Synchronisation a la connexion
 
 const syncLocalFavoritesToAccount = async () => {
   const localFavs = getLocalFavorites();

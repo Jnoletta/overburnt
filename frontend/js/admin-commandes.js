@@ -12,7 +12,7 @@ const STATUTS = {
   annulee:        'Annulée',
 };
 
-// ── Chargement des commandes ──────────────────────────────────────────────────
+// Chargement des commandes 
 
 const loadCommandes = async () => {
   const container = document.getElementById('orders-list');
@@ -49,7 +49,7 @@ const loadCommandes = async () => {
   }
 };
 
-// ── Rendu d'une commande ──────────────────────────────────────────────────────
+//  Rendu d'une commande 
 
 const renderOrder = (order) => {
   const date = new Date(order.created_at).toLocaleDateString('fr-FR');
@@ -77,7 +77,7 @@ const renderOrder = (order) => {
   `;
 };
 
-// ── Afficher / Masquer le détail ──────────────────────────────────────────────
+// Afficher / Masquer le détail
 
 const toggleDetail = async (orderId) => {
   const panel = document.getElementById(`detail-${orderId}`);
@@ -126,7 +126,7 @@ const toggleDetail = async (orderId) => {
   }
 };
 
-// ── Mettre à jour le statut ───────────────────────────────────────────────────
+// Mettre à jour le statut
 
 const updateStatus = async (orderId, status) => {
   try {

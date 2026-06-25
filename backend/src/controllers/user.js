@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const User   = require('../models/user');
 
-// ── Mon compte ────────────────────────────────────────────────────────────────
+// Mon compte
 
 const getMyAccount = async (req, res) => {
   try {
@@ -44,7 +44,7 @@ const updatePassword = async (req, res) => {
   }
 };
 
-// ── Admin ─────────────────────────────────────────────────────────────────────
+// Admin
 
 const getAllUsers = async (req, res) => {
   try {

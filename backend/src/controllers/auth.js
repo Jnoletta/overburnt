@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
-const jwt    = require('jsonwebtoken');
-const User   = require('../models/user');
+const jwt = require('jsonwebtoken');
+const User= require('../models/user');
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 

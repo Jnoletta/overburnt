@@ -1,6 +1,6 @@
 // Detecte la profondeur de la page (utile si tu veux differencier l'animation
 // selon le contexte, mais l'image du curseur reste geree par le CSS)
-const cursorIsAdminPage = window.location.pathname.includes('/admin/');
+// const cursorIsAdminPage = window.location.pathname.includes('/admin/');
 
 document.addEventListener('DOMContentLoaded', () => {
   const cursor = document.createElement('div');

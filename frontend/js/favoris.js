@@ -39,7 +39,7 @@ const loadFavoris = async () => {
   }
 };
 
-// ── Rendu carte ───────────────────────────────────────────────────────────────
+// Rendu carte
 
 const renderCard = (product) => {
   const imageUrl = product.image_url
@@ -62,7 +62,7 @@ const renderCard = (product) => {
   `;
 };
 
-// ── Supprimer un favori (connecte ou invite) ──────────────────────────────────
+// Supprimer un favori (connecte ou invite)
 
 const removeFavori = async (product, btn) => {
   try {

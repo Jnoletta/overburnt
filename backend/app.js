@@ -5,13 +5,13 @@ const path    = require('path');
 
 const app = express();
 
-// ── Middleware ────────────────────────────────────────────────────────────────
+// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// ── Routes ────────────────────────────────────────────────────────────────────
+// Routes 
 app.use('/api/auth',         require('./src/routes/auth'));
 app.use('/api/products',     require('./src/routes/product'));
 app.use('/api/orders',    require('./src/routes/order'));

@@ -19,6 +19,7 @@
   100% { transform:  translateX(0px) translateY(0px); }
 }
 
+/* Selecteur composé pour plus de sécurité */
 .custom-cursor.is-hovering {
   animation: cursor-back-forth 0.25s step-end infinite;
  background-image: url("../images/pointers/pointer.png");

@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   await updateFavoriteIcon();
 });
 
-// ── Icone compte ──────────────────────────────────────────────────────────────
+// Icone compte
 
 const updateAccountIcon = () => {
   const icon  = document.getElementById('nav-account-icon');
@@ -33,7 +33,7 @@ const updateAccountIcon = () => {
   }
 };
 
-// ── Icone panier ──────────────────────────────────────────────────────────────
+// Icone panier
 
 const updateCartIcon = () => {
   const icon    = document.getElementById('nav-cart-icon');
@@ -52,7 +52,7 @@ const updateCartIcon = () => {
   }
 };
 
-// ── Icone favoris (connecte ou invite) ────────────────────────────────────────
+//  Icone favoris (connecte ou invite)
 
 const updateFavoriteIcon = async () => {
   const icon = document.getElementById('nav-favorite-icon');

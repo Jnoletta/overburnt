@@ -3,7 +3,7 @@ const Product = require('../models/product');
 
 const STATUTS_VALIDES = ['en_attente', 'en_preparation', 'expediee', 'livree', 'annulee'];
 
-// ── Créer une commande ────────────────────────────────────────────────────────
+// Créer une commande
 
 const createOrder = async (req, res) => {
   try {
@@ -73,7 +73,7 @@ const createOrder = async (req, res) => {
   }
 };
 
-// ── Toutes les commandes (admin) ──────────────────────────────────────────────
+// Toutes les commandes (admin)
 
 const getAllOrders = async (req, res) => {
   try {
@@ -85,7 +85,7 @@ const getAllOrders = async (req, res) => {
   }
 };
 
-// ── Mes commandes (utilisateur connecté) ─────────────────────────────────────
+// Mes commandes (utilisateur connecté)
 
 const getMyOrders = async (req, res) => {
   try {
@@ -100,7 +100,7 @@ const getMyOrders = async (req, res) => {
   }
 };
 
-// ── Détail d'une commande ─────────────────────────────────────────────────────
+// Détail d'une commande
 
 const getOne = async (req, res) => {
   try {
@@ -115,7 +115,7 @@ const getOne = async (req, res) => {
   }
 };
 
-// ── Mettre à jour le statut (admin) ──────────────────────────────────────────
+// Mettre à jour le statut (admin)
 
 const updateStatus = async (req, res) => {
   try {

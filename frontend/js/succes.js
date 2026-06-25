@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Vider le panier maintenant que le paiement est confirmé
   clearCart();
 
-  const orderId   = localStorage.getItem('pending_order_id');
+  const orderId = localStorage.getItem('pending_order_id');
   const container = document.getElementById('succes-content');
 
   localStorage.removeItem('pending_order_id');

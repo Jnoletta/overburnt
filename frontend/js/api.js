@@ -1,12 +1,12 @@
 const API_URL = 'http://localhost:3000/api';
 
-// ── Token JWT ─────────────────────────────────────────────────────────────────
+// Token JWT
 
 const getToken  = ()          => localStorage.getItem('token');
 const setToken  = (token)     => localStorage.setItem('token', token);
 const removeToken = ()        => localStorage.removeItem('token');
 
-// ── Utilisateur connecté ──────────────────────────────────────────────────────
+// Utilisateur connecté
 
 // Décode le payload du JWT sans librairie externe
 const getUser = () => {
@@ -29,7 +29,7 @@ const logout = () => {
   window.location.href = 'connexion.html';
 };
 
-// ── Fetch authentifié ─────────────────────────────────────────────────────────
+// Fetch authentifié
 
 const authFetch = async (endpoint, options = {}) => {
   const token = getToken();
@@ -42,7 +42,7 @@ const authFetch = async (endpoint, options = {}) => {
   return response;
 };
 
-// ── Protection de page ────────────────────────────────────────────────────────
+// Protection de page
 
 // Redirige vers connexion si non connecté
 const requireAuth = () => {

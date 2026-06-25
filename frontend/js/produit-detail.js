@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  const container      = document.getElementById('product-detail');
+  const container = document.getElementById('product-detail');
   const loadingMessage = document.getElementById('loading-message');
 
-  const params    = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(window.location.search);
   const productId = params.get('id');
 
   if (!productId) {
@@ -24,19 +24,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadingMessage.style.display = 'none';
     container.innerHTML = renderDetail(product, isFav);
 
-    // ── Selecteur de quantite ────────────────────────────────────────────────
+    // Selecteur de quantite
     const inCart   = getCart().find((i) => i.id === product.id)?.quantity || 0;
     const maxQty   = product.stock - inCart;
     let   quantity = 1;
 
-    const display  = document.getElementById('quantity-display');
+    const display = document.getElementById('quantity-display');
     const btnMinus = document.getElementById('btn-minus');
-    const btnPlus  = document.getElementById('btn-plus');
+    const btnPlus = document.getElementById('btn-plus');
 
     const refreshButtons = () => {
       display.textContent = quantity;
-      btnMinus.disabled   = quantity <= 1;
-      btnPlus.disabled    = quantity >= maxQty;
+      btnMinus.disabled = quantity <= 1;
+      btnPlus.disabled = quantity >= maxQty;
     };
 
     refreshButtons();
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       if (quantity < maxQty) { quantity++; refreshButtons(); }
     });
 
-    // ── Bouton panier ────────────────────────────────────────────────────────
+    // Bouton panier
     document.getElementById('btn-add-cart').addEventListener('click', () => {
       if (maxQty <= 0) return;
       addToCart(product, quantity);
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       setTimeout(() => (btn.textContent = 'Ajouter au panier'), 1500);
     });
 
-    // ── Bouton favori ────────────────────────────────────────────────────────
+    // Bouton favori
     document.getElementById('btn-favorite').onclick = () => handleFavorite(product, isFav);
 
   } catch (err) {
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
-// ── Rendu ─────────────────────────────────────────────────────────────────────
+// Rendu
 
 const renderDetail = (product, isFav) => {
   const imageUrl = product.image_url
@@ -116,7 +116,7 @@ const renderDetail = (product, isFav) => {
   `;
 };
 
-// ── Favori (connecte ou invite) ───────────────────────────────────────────────
+// Favori (connecte ou invite)
 
 const handleFavorite = async (product, currentState) => {
   try {

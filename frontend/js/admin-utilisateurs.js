@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   await loadUsers();
 });
 
-// ── Chargement des utilisateurs ───────────────────────────────────────────────
+// Chargement des utilisateurs
 
 const loadUsers = async () => {
   const container = document.getElementById('users-list');
@@ -54,7 +54,7 @@ const loadUsers = async () => {
   }
 };
 
-// ── Rendu d'une ligne ─────────────────────────────────────────────────────────
+// Rendu d'une ligne
 
 const renderRow = (user, currentUserId) => {
   const date   = new Date(user.created_at).toLocaleDateString('fr-FR');
@@ -81,7 +81,7 @@ const renderRow = (user, currentUserId) => {
   `;
 };
 
-// ── Changer le rôle ────────────────────────────────────────────────────────────
+// Changer le rôle
 
 const toggleRole = async (id, currentRole) => {
   const newRole = currentRole === 'admin' ? 'customer' : 'admin';
@@ -106,7 +106,7 @@ const toggleRole = async (id, currentRole) => {
   }
 };
 
-// ── Supprimer un utilisateur ──────────────────────────────────────────────────
+// Supprimer un utilisateur
 
 const deleteUser = async (id) => {
   if (!confirm('Supprimer ce compte et toutes ses données ?')) return;

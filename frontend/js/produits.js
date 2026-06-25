@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  const grid           = document.getElementById('products-grid');
+  const grid = document.getElementById('products-grid');
   const loadingMessage = document.getElementById('loading-message');
-  const emptyMessage   = document.getElementById('empty-message');
+  const emptyMessage = document.getElementById('empty-message');
 
   let userFavorites = [];
 
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
       const res = await authFetch('/favorites');
       if (res.ok) {
-        const data    = await res.json();
+        const data = await res.json();
         userFavorites = data.map((f) => f.id);
       }
     } catch {
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Recuperer les produits
   try {
-    const res      = await authFetch('/products');
+    const res = await authFetch('/products');
     const products = await res.json();
 
     loadingMessage.style.display = 'none';
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     grid.querySelectorAll('.btn-cart').forEach((btn) => {
       btn.addEventListener('click', () => {
         const productId = parseInt(btn.dataset.id);
-        const product    = products.find((p) => p.id === productId);
+        const product = products.find((p) => p.id === productId);
         addToCart(product);
         btn.textContent = 'Ajouté ✓';
         setTimeout(() => (btn.textContent = 'Ajouter au panier'), 1500);
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     grid.querySelectorAll('.btn-favorite').forEach((btn) => {
       btn.addEventListener('click', () => {
         const productId = parseInt(btn.dataset.id);
-        const product    = products.find((p) => p.id === productId);
+        const product = products.find((p) => p.id === productId);
         handleFavorite(btn, product);
       });
     });
@@ -60,10 +60,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
-// ── Rendu d'une carte produit ─────────────────────────────────────────────────
+// Rendu d'une carte produit
 
 const renderCard = (product, favorites) => {
-  const isFav    = favorites.includes(product.id);
+  const isFav = favorites.includes(product.id);
   const imageUrl = product.image_url
     ? `http://localhost:3000${product.image_url}`
     : '../images/placeholder.png';
@@ -87,7 +87,7 @@ const renderCard = (product, favorites) => {
   `;
 };
 
-// ── Gestion des favoris (connecte ou invite) ──────────────────────────────────
+// Gestion des favoris (connecté ou invité)
 
 const handleFavorite = async (btn, product) => {
   const isFav = btn.dataset.fav === 'true';
@@ -95,8 +95,8 @@ const handleFavorite = async (btn, product) => {
   try {
     const newFav = await toggleFavorite(product, isFav);
 
-    btn.dataset.fav  = newFav;
-    btn.textContent  = newFav ? '♥' : '♡';
+    btn.dataset.fav = newFav;
+    btn.textContent = newFav ? '♥' : '♡';
     btn.classList.toggle('active', newFav);
 
     if (typeof setFavoriteIconState === 'function') {

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 document.getElementById('btn-logout').addEventListener('click', logout);
 
-// ── Onglets ───────────────────────────────────────────────────────────────────
+// Onglets
 
 const initTabs = () => {
   document.querySelectorAll('.tab-btn').forEach((btn) => {
@@ -20,7 +20,7 @@ const initTabs = () => {
   });
 };
 
-// ── Profil ────────────────────────────────────────────────────────────────────
+// Profil
 
 const loadProfil = async () => {
   try {
@@ -77,7 +77,7 @@ const saveProfil = async (e) => {
   }
 };
 
-// ── Mot de passe ──────────────────────────────────────────────────────────────
+// Mot de passe
 
 const savePassword = async (e) => {
   e.preventDefault();
@@ -117,7 +117,7 @@ const savePassword = async (e) => {
   }
 };
 
-// ── Commandes ─────────────────────────────────────────────────────────────────
+// Commandes
 
 const STATUTS = {
   en_attente:     'En attente',

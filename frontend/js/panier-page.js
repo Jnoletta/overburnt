@@ -83,22 +83,22 @@ const renderItem = (item) => {
   `;
 };
 
-// ── Récapitulatif ─────────────────────────────────────────────────────────────
+//  Récapitulatif
 
 const updateSummary = (cart) => {
-  const totalHT  = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const totalHT = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const totalTVA = cart.reduce((sum, item) => {
     const tva = item.taux_tva || 20;
     return sum + (item.price * item.quantity * tva / 100);
   }, 0);
   const totalTTC = totalHT + totalTVA;
 
-  document.getElementById('total-ht').textContent  = totalHT.toFixed(2);
+  document.getElementById('total-ht').textContent = totalHT.toFixed(2);
   document.getElementById('total-tva').textContent = totalTVA.toFixed(2);
   document.getElementById('total-ttc').textContent = totalTTC.toFixed(2);
 };
 
-// ── Commander ─────────────────────────────────────────────────────────────────
+// Commander 
 
 const handleCheckout = async () => {
   if (!isLoggedIn()) {
@@ -107,9 +107,9 @@ const handleCheckout = async () => {
   }
 
   const cart = getCart();
-  const btn  = document.getElementById('btn-checkout');
-  btn.disabled     = true;
-  btn.textContent  = 'Traitement...';
+  const btn = document.getElementById('btn-checkout');
+  btn.disabled = true;
+  btn.textContent = 'Traitement...';
 
   try {
     // 1. Créer la commande
@@ -118,7 +118,7 @@ const handleCheckout = async () => {
       body: JSON.stringify({
         items: cart.map((item) => ({
           product_id: item.id,
-          quantity:   item.quantity,
+          quantity: item.quantity,
         })),
       }),
     });
@@ -127,7 +127,7 @@ const handleCheckout = async () => {
 
     if (!orderRes.ok) {
       alert(orderData.message || 'Erreur lors de la commande');
-      btn.disabled    = false;
+      btn.disabled = false;
       btn.textContent = 'Commander';
       return;
     }
@@ -142,7 +142,7 @@ const handleCheckout = async () => {
 
     if (!paymentRes.ok) {
       alert(paymentData.message || 'Erreur lors du paiement');
-      btn.disabled    = false;
+      btn.disabled = false;
       btn.textContent = 'Commander';
       return;
     }
@@ -154,7 +154,7 @@ const handleCheckout = async () => {
   } catch (err) {
     console.error('Erreur checkout :', err);
     alert('Impossible de contacter le serveur');
-    btn.disabled    = false;
+    btn.disabled = false;
     btn.textContent = 'Commander';
   }
 };

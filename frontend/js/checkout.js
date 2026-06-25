@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('form-checkout').addEventListener('submit', handleSubmit);
 });
 
-// ── Récapitulatif commande ────────────────────────────────────────────────────
+// Récapitulatif commande
 
 const renderSummary = (cart) => {
   const container = document.getElementById('checkout-items');
@@ -38,7 +38,7 @@ const renderSummary = (cart) => {
   document.getElementById('summary-ttc').textContent = (totalHT + totalTVA).toFixed(2);
 };
 
-// ── Pré-remplissage si profil existant ───────────────────────────────────────
+// Pré-remplissage si profil existant
 
 const prefillForm = async () => {
   try {
@@ -57,7 +57,7 @@ const prefillForm = async () => {
   }
 };
 
-// ── Soumission ────────────────────────────────────────────────────────────────
+// Soumission
 
 const handleSubmit = async (e) => {
   e.preventDefault();

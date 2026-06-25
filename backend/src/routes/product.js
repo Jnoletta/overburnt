@@ -4,11 +4,11 @@ const { getAll, getOne, create, update, remove, getAllAdmin } = require('../cont
 const { verifyToken, verifyAdmin } = require('../middleware/auth');
 
 
-// ── Publiques ─────────────────────────────────────────────────────────────────
+// Routes Publiques
 router.get('/',    getAll);
 router.get('/:id', getOne);
 
-// ── Admin uniquement ──────────────────────────────────────────────────────────
+// Routes Admin
 router.post('/',       verifyToken, verifyAdmin, create);
 router.put('/:id',     verifyToken, verifyAdmin, update);
 router.delete('/:id',  verifyToken, verifyAdmin, remove);

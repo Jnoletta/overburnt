@@ -1,6 +1,6 @@
 const pool = require('../config/db');
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
+// Helpers
 
 const findCustomerByUserId = async (userId) => {
   const [rows] = await pool.query(
@@ -10,7 +10,7 @@ const findCustomerByUserId = async (userId) => {
   return rows[0] || null;
 };
 
-// ── Lecture ───────────────────────────────────────────────────────────────────
+// Lecture
 
 const findAll = async () => {
   const [rows] = await pool.query(
@@ -48,7 +48,7 @@ const findById = async (id) => {
   return { ...orderRows[0], items: itemRows };
 };
 
-// ── Écriture (transaction) ────────────────────────────────────────────────────
+// Écriture (transaction)
 
 const create = async (customerId, items, totalCost, shippingAddress) => {
   const conn = await pool.getConnection();

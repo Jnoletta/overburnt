@@ -1,6 +1,6 @@
 const Customer = require('../models/customer');
 
-// ── Profil de l'utilisateur connecté ─────────────────────────────────────────
+// Profil de l'utilisateur connecté
 
 const getMyProfile = async (req, res) => {
   try {
@@ -62,7 +62,7 @@ const updateMyProfile = async (req, res) => {
   }
 };
 
-// ── Admin ─────────────────────────────────────────────────────────────────────
+// Admin
 
 const getAllCustomers = async (req, res) => {
   try {

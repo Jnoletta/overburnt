@@ -1,4 +1,4 @@
-/* ── Carte produit : restreindre le style flottant à ce contexte ── */
+/* Carte produit : restreindre le style flottant à ce contexte  */
 .product-card .btn-favorite {
   position: absolute;
   top: 10px;
@@ -16,7 +16,7 @@
   color: red;
 }
 
-/* ── Détail produit ──────────────────────────────────────────── */
+/* Détail produit */
 .product-detail-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -150,7 +150,7 @@
   padding: 20px 10px;
 }
 
-/* ── Responsive ──────────────────────────────────────────────── */
+/*  Responsive */
 @media (max-width: 768px) {
   .product-detail-content {
     grid-template-columns: 1fr;
