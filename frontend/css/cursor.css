@@ -1,13 +1,13 @@
-/* Cacher le curseur natif partout */
-* { cursor: none !important; }
+* { 
+  cursor: none !important; /* pour cacher le curseur et forcer l'application avec !important */
+ }
 
 .custom-cursor {
-  position: fixed;
+  position: fixed; /* pour suivre le scroll */
   width: 120px;
   height: 120px;
   pointer-events: none; /* ne bloque pas les clics */
-  z-index: 9999;
-  transform: translate(0%, 0%);
+  z-index: 9999; 
   background-image: url("../images/pointers/pointer.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -21,8 +21,5 @@
 
 /* Selecteur composé pour plus de sécurité */
 .custom-cursor.is-hovering {
-  animation: cursor-back-forth 0.25s step-end infinite;
- background-image: url("../images/pointers/pointer.png");
-  background-size: contain;
-  background-repeat: no-repeat;
+  animation: cursor-back-forth 0.25s step-end infinite; /* le temps indiqué joue sur la vitesse des keysframes */
 }

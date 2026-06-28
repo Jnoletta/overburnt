@@ -51,3 +51,15 @@
 
 .order-items-table th { font-weight: 600; }
 .order-total-line { font-size: 1.1rem; margin-top: 8px; }
+
+
+.admin-section {
+  max-width: 900px;
+  margin: 48px auto;
+  padding: 0 20px;
+}
+
+.admin-section h1 {
+  text-align: center;
+  margin-bottom: 32px;
+}

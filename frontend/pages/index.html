@@ -24,39 +24,48 @@
                 </a>
                 <h1 class="brand-title">Overburnt™</h1>
             </div>
-                
-            <div class="main-menu">
-                <a href="produits.html">
-                    Produits
-                </a>
-                <a href="lifestyle.html">
-                    Lifestyle
-                </a>
-                <a href="marque.html">
-                    À propos
-                </a>
+
+            <button id="burger-toggle" class="burger-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div id="mobile-nav-panel" class="mobile-nav-panel">
+                <div class="main-menu">
+                    <a href="produits.html">
+                        Produits
+                    </a>
+                    <a href="lifestyle.html">
+                        Lifestyle
+                    </a>
+                    <a href="marque.html">
+                        À propos
+                    </a>
+                </div>
+
+                <div class="client-menu">
+                    <a href="connexion.html" id="nav-account-link" class="nav-icon-link">
+                        <img id="nav-account-icon" class="icon" src="../images/icons/icon_not_connected.png" alt="compte" />
+                        <span class="icon-label" id="nav-account-label">Connexion</span>
+                    </a>
+
+                    <a href="favoris.html" id="nav-favorite-link" class="nav-icon-link">
+                        <img id="nav-favorite-icon" class="icon" src="../images/icons/icon_favorite_empty.png" alt="favoris" />
+                        <span class="icon-label">Favoris</span>
+                    </a>
+
+                    <a href="panier.html" id="nav-cart-link" class="nav-icon-link">
+                        <div class="icon-wrapper">
+                            <img id="nav-cart-icon" class="icon" src="../images/icons/icon_cart_empty.png" alt="panier" />
+                            <span id="cart-count" class="cart-badge">0</span>
+                        </div>
+                        <span class="icon-label">Panier</span>
+                    </a>
+                </div>
             </div>
 
-            <div class="client-menu">
-                <a href="connexion.html" id="nav-account-link" class="nav-icon-link">
-                    <img id="nav-account-icon" class="icon" src="../images/icons/icon_not_connected.png" alt="compte" />
-                    <span class="icon-label" id="nav-account-label">Connexion</span>
-                </a>
-
-                <a href="favoris.html" id="nav-favorite-link" class="nav-icon-link">
-                    <img id="nav-favorite-icon" class="icon" src="../images/icons/icon_favorite_empty.png" alt="favoris" />
-                    <span class="icon-label">Favoris</span>
-                </a>
-
-                <a href="panier.html" id="nav-cart-link" class="nav-icon-link">
-                    <div class="icon-wrapper">
-                        <img id="nav-cart-icon" class="icon" src="../images/icons/icon_cart_empty.png" alt="panier" />
-                        <span id="cart-count" class="cart-badge">0</span>
-                    </div>
-                    <span class="icon-label">Panier</span>
-                </a>
-            </div>
-
+            <div id="menu-overlay" class="menu-overlay"></div>
 
         </nav>
         <nav id="admin-menu" style="display:none">
@@ -65,6 +74,7 @@
             <a href="admin/utilisateurs.html">Utilisateurs</a>
         </nav>
     </header>
+
     <main class="main-page-wrapper">
         <section class="hero-column-left">
             
@@ -80,7 +90,7 @@
                     <h2 id="featured-dark">Featured</h2>
                 </div>
             </div>
-            <a class="button" href="">Shop Now!</a>
+            <a class="button" href="produits.html">Shop Now!</a>
         </section>
     </main>
 
@@ -93,7 +103,7 @@
             <!-- <img class="img-masonry"src="images/masonry/slide overburbt.png"> -->
             <img class="img-masonry"src="../images/masonry/tube overburnt.png">
             <div id="lifestyle-button">
-                <a class="button" href="">Discover the true lifestyle!</a>
+                <a class="button" href="lifestyle.html">Discover the true lifestyle!</a>
             </div>
         </div>
 
@@ -109,7 +119,7 @@
             <h2>Want to know more about the company ?</h2>
             <p>Time to set your goals on fire, litteraly.</p>
             <div>
-                <a class="button" href="/pages/brand.html">Discover OVERBURNT™ !</a>
+                <a class="button" href="marque.html">Discover OVERBURNT™ !</a>
             </div>
         </div>
 

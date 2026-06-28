@@ -14,7 +14,7 @@
 </head>
 <body>
 
-    <header>
+       <header>
         <nav class="menu">
             <div class="logo-title">
                 <a href="../index.html">
@@ -22,39 +22,48 @@
                 </a>
                 <h1 class="brand-title">Overburnt™</h1>
             </div>
-                
-            <div class="main-menu">
-                <a href="../produits.html">
-                    Produits
-                </a>
-                <a href="../lifestyle.html">
-                    Lifestyle
-                </a>
-                <a href="../marque.html">
-                    À propos
-                </a>
+
+            <button id="burger-toggle" class="burger-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div id="mobile-nav-panel" class="mobile-nav-panel">
+                <div class="main-menu">
+                    <a href="../produits.html">
+                        Produits
+                    </a>
+                    <a href="../lifestyle.html">
+                        Lifestyle
+                    </a>
+                    <a href="../marque.html">
+                        À propos
+                    </a>
+                </div>
+
+                <div class="client-menu">
+                    <a href="../connexion.html" id="nav-account-link" class="nav-icon-link">
+                        <img id="nav-account-icon" class="icon" src="../../images/icons/icon_not_connected.png" alt="compte" />
+                        <span class="icon-label" id="nav-account-label">Connexion</span>
+                    </a>
+
+                    <a href="../favoris.html" id="nav-favorite-link" class="nav-icon-link">
+                        <img id="nav-favorite-icon" class="icon" src="../../images/icons/icon_favorite_empty.png" alt="favoris" />
+                        <span class="icon-label">Favoris</span>
+                    </a>
+
+                    <a href="../panier.html" id="nav-cart-link" class="nav-icon-link">
+                        <div class="icon-wrapper">
+                            <img id="nav-cart-icon" class="icon" src="../../images/icons/icon_cart_empty.png" alt="panier" />
+                            <span id="cart-count" class="cart-badge">0</span>
+                        </div>
+                        <span class="icon-label">Panier</span>
+                    </a>
+                </div>
             </div>
 
-            <div class="client-menu">
-                <a href="connexion.html" id="nav-account-link" class="nav-icon-link">
-                    <img id="nav-account-icon" class="icon" src="../../images/icons/icon_not_connected.png" alt="compte" />
-                    <span class="icon-label" id="nav-account-label">Connexion</span>
-                </a>
-
-                <a href="favoris.html" id="nav-favorite-link" class="nav-icon-link">
-                    <img id="nav-favorite-icon" class="icon" src="../../images/icons/icon_favorite_empty.png" alt="favoris" />
-                    <span class="icon-label">Favoris</span>
-                </a>
-
-                <a href="panier.html" id="nav-cart-link" class="nav-icon-link">
-                    <div class="icon-wrapper">
-                        <img id="nav-cart-icon" class="icon" src="../../images/icons/icon_cart_empty.png" alt="panier" />
-                        <span id="cart-count" class="cart-badge">0</span>
-                    </div>
-                    <span class="icon-label">Panier</span>
-                </a>
-            </div>
-
+            <div id="menu-overlay" class="menu-overlay"></div>
 
         </nav>
         <nav id="admin-menu" style="display:none">

@@ -7,9 +7,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   updateAccountIcon();
   updateCartIcon();
   await updateFavoriteIcon();
+  initBurgerMenu();
 });
 
-// Icone compte
+// ── Icone compte ──────────────────────────────────────────────────────────────
 
 const updateAccountIcon = () => {
   const icon  = document.getElementById('nav-account-icon');
@@ -33,7 +34,7 @@ const updateAccountIcon = () => {
   }
 };
 
-// Icone panier
+// ── Icone panier ──────────────────────────────────────────────────────────────
 
 const updateCartIcon = () => {
   const icon    = document.getElementById('nav-cart-icon');
@@ -52,7 +53,7 @@ const updateCartIcon = () => {
   }
 };
 
-//  Icone favoris (connecte ou invite)
+// ── Icone favoris (connecte ou invite) ────────────────────────────────────────
 
 const updateFavoriteIcon = async () => {
   const icon = document.getElementById('nav-favorite-icon');
@@ -84,4 +85,33 @@ const setFavoriteIconState = (hasFavorites) => {
   icon.src = hasFavorites
     ? imgBase + 'icon_favorite_full.png'
     : imgBase + 'icon_favorite_empty.png';
+};
+
+// ── Menu burger (mobile) ───────────────────────────────────────────────────────
+
+const initBurgerMenu = () => {
+  const burgerBtn = document.getElementById('burger-toggle');
+  const panel     = document.getElementById('mobile-nav-panel');
+  const overlay   = document.getElementById('menu-overlay');
+
+  if (!burgerBtn || !panel || !overlay) return;
+
+  const closeMenu = () => {
+    panel.classList.remove('is-open');
+    overlay.classList.remove('is-active');
+    burgerBtn.classList.remove('is-active');
+  };
+
+  burgerBtn.addEventListener('click', () => {
+    panel.classList.toggle('is-open');
+    overlay.classList.toggle('is-active');
+    burgerBtn.classList.toggle('is-active');
+  });
+
+  overlay.addEventListener('click', closeMenu);
+
+  // Fermer le panneau si on clique sur un lien (avant la navigation)
+  panel.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
 };

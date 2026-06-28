@@ -48,3 +48,19 @@
   display: flex;
   gap: 6px;
 }
+
+.admin-section {
+  max-width: 900px;
+  margin: 48px auto;
+  padding: 0 20px;
+}
+
+.admin-section h1 {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+#users-list {
+  max-width: 800px;
+  margin: 0 auto;
+}

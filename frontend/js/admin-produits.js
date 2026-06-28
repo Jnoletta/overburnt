@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('image').addEventListener('change', previewImage);
 });
 
-// Chargement des produits
+// ── Chargement des produits ───────────────────────────────────────────────────
 
 const loadProducts = async () => {
   const container = document.getElementById('products-list');
@@ -48,7 +48,7 @@ const loadProducts = async () => {
   }
 };
 
-// Rendu d'une ligne produit
+// ── Rendu d'une ligne produit ─────────────────────────────────────────────────
 
 const renderRow = (p) => {
   const imageUrl = p.image_url
@@ -72,7 +72,7 @@ const renderRow = (p) => {
   `;
 };
 
-// Aperçu image
+// ── Aperçu image ──────────────────────────────────────────────────────────────
 
 const previewImage = (e) => {
   const file    = e.target.files[0];
@@ -82,7 +82,7 @@ const previewImage = (e) => {
   preview.innerHTML = `<img src="${url}" alt="Aperçu" style="max-width:200px;margin-top:8px;" />`;
 };
 
-// Soumission formulaire
+// ── Soumission formulaire ─────────────────────────────────────────────────────
 
 const handleSubmit = async (e) => {
   e.preventDefault();
@@ -96,7 +96,6 @@ const handleSubmit = async (e) => {
     let imageUrl = null;
     const imageFile = document.getElementById('image').files[0];
 
-    // Upload image si une nouvelle est sélectionnée
     if (imageFile) {
       const formData = new FormData();
       formData.append('image', imageFile);
@@ -130,6 +129,19 @@ const handleSubmit = async (e) => {
       ...(imageUrl && { image_url: imageUrl }),
     };
 
+    if (productData.price <= 0) {
+      message.textContent = 'Le prix doit être supérieur à 0';
+      message.style.color = 'red';
+      btn.disabled = false;
+      return;
+    }
+    if (productData.stock < 0) {
+      message.textContent = 'Le stock ne peut pas être négatif';
+      message.style.color = 'red';
+      btn.disabled = false;
+      return;
+    }
+
     const method   = productId ? 'PUT' : 'POST';
     const endpoint = productId ? `/products/${productId}` : '/products';
 
@@ -160,7 +172,7 @@ const handleSubmit = async (e) => {
   }
 };
 
-// Remplir le formulaire pour modification
+// ── Remplir le formulaire pour modification ───────────────────────────────────
 
 const fillForm = (product) => {
   document.getElementById('product-id').value   = product.id;
@@ -183,7 +195,7 @@ const fillForm = (product) => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
-// Réinitialiser le formulaire
+// ── Réinitialiser le formulaire ───────────────────────────────────────────────
 
 const resetForm = () => {
   document.getElementById('form-produit').reset();
@@ -195,28 +207,35 @@ const resetForm = () => {
   document.getElementById('form-message').textContent      = '';
 };
 
-// Supprimer 
+// ── Supprimer ─────────────────────────────────────────────────────────────────
 
 const deleteProduct = async (id) => {
   if (!confirm('Supprimer ce produit définitivement ?')) return;
 
   try {
-    const res = await authFetch(`/products/${id}`, { method: 'DELETE' });
-    if (res.ok) await loadProducts();
+    const res    = await authFetch(`/products/${id}`, { method: 'DELETE' });
+    const result = await res.json();
+
+    if (res.ok) {
+      await loadProducts();
+    } else {
+      // Affiche le message renvoyé par le backend (ex: produit déjà commandé,
+      // suppression bloquée pour préserver l'historique des commandes)
+      alert(result.message || 'Erreur lors de la suppression');
+    }
   } catch (err) {
     console.error('Erreur suppression :', err);
+    alert('Erreur serveur lors de la suppression');
   }
 };
 
-// Activer / Désactiver
+// ── Activer / Désactiver ──────────────────────────────────────────────────────
 
 const toggleActive = async (id, currentActive) => {
   try {
-    // Récupérer les données actuelles du produit
     const resGet  = await authFetch(`/products/${id}`);
     const product = await resGet.json();
 
-    // Envoyer le produit complet avec is_active modifié
     const res = await authFetch(`/products/${id}`, {
       method: 'PUT',
       body: JSON.stringify({

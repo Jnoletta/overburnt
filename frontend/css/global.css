@@ -1,6 +1,7 @@
 * {
     margin:0;
     font-family: league spartan, "sans serif";
+    box-sizing: border-box;
 }
 
 body {
@@ -15,47 +16,32 @@ body {
     margin:0;
 }
 
-/* main {
-    display: flex;
-    justify-content: center;
-    margin-left:auto;
-    margin-right: auto;
-} */
-
 .button {
+    display: inline-block;
     padding:0.5rem 1rem;
     font-size: 3rem;
-    background-color: yellow;
     border:solid 5px black;
     border-radius:5px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Impact, sans-serif;
     color: black;
     text-transform:uppercase;
+    animation: blink-shop 0.3s infinite;
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    text-align: center;
 }
-
-/* .button:hover {
-    opacity:1;
-    background-color: #FA230F;
-    color:#FFEAD6;
-    cursor: url("/pointers/cursor.ani")0 0, auto;
-    
-} */
 
 @keyframes blink-shop {
   0%, 49% {
-    background-color: #FFE800;
+    background-color: yellow;
     color: #000;
-    border-color: #000;
   }
   50%, 100% {
     background-color: #FA230F;
     color: #fff;
-    border-color: #000000;
   }
-}
-
-.button {
-  animation: blink-shop 0.5s step-end infinite;
 }
 
 .logo {
@@ -83,25 +69,32 @@ main {
 .main-page-wrapper {
     display:grid;
     grid-template-columns: 1fr 1fr;
-    /* min-height:100vh */
-    /* min-height:100vh; */
     position:relative;
     z-index:1;
-    margin-top:-60px;
+}
+
+/* Sur index.html, .main-page-wrapper EST le hero directement.
+   Sur lifestyle/marque, c'est #main-lifestyle qui sert d'enveloppe
+   pour le hero + la section texte — il ne doit donc pas être limité
+   à 100dvh. On cible donc uniquement le cas index.html ici. */
+.main-page-wrapper:not(#main-lifestyle) {
+    height: calc(100vh - 85px);
+    min-height: 0;
+    overflow: hidden;
 }
 
 
-/* navbar */
+/* navbar — inchangée, sera refaite en menu burger séparément */
 nav {
     display:flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items:center;
     position:relative;
     z-index:10;
-    min-height: 40px;
-    height:65px;
-    padding: 6px 0;
+    min-height: 85px;
+    padding: 4px 0;
     background-color: rgb(255, 0, 0) ;
     border: dashed 6px #F5F0E8;
 }
@@ -118,8 +111,6 @@ nav {
     width: 60px;
     margin-top: 0;
 }
-
-
 
 .logo-title {
     display: flex;
@@ -147,8 +138,67 @@ nav {
     margin-right: 0.5rem;
 }
 
+/* Enveloppe main-menu + client-menu : transparente en desktop
+   (display:contents fait disparaître sa boîte, ses enfants
+   redeviennent des enfants directs de .menu pour la répartition
+   d'origine), devient le panneau glissant en mobile */
+.mobile-nav-panel {
+    display: contents;
+}
+
 .client-menu a :hover, a:hover {
     opacity:0.75;
+}
+
+/* ── Menu burger (mobile) ────────────────────────────────────── */
+.burger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.burger-btn span {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: #FFEAD6;
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.burger-btn.is-active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.burger-btn.is-active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-btn.is-active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Voile sombre derrière le panneau, cliquable pour fermer */
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 999;
+}
+
+.menu-overlay.is-active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .nav-icon-link {
@@ -198,7 +248,6 @@ footer {
     background-color: rgb(17, 16, 16);
     display: flex;
     flex-direction: row;
-    /* padding: 3rem; */
     justify-content: space-around;
     align-items: center;
     border-top: dashed  10px #FFEAD6;
@@ -225,9 +274,6 @@ footer {
     flex-direction: column;
     gap: 0.5rem;
 }
-
-
-
 
 
 /* Connexion & Inscription Form */
@@ -312,82 +358,110 @@ footer {
   font-weight: 600;
 }
 
-/* page lifestyle */
+
+/* ════════════════════════════════════════════════════════════════
+   STRUCTURE PARTAGÉE "LIFESTYLE-STYLE"
+   Utilisée par lifestyle.html ET marque.html (marque.html ne charge
+   pas lifestyle.css, donc ces règles DOIVENT rester ici, source unique).
+   Tailles fluides via clamp() : proportions identiques du desktop
+   jusqu'à 600px, un seul vrai changement de structure en dessous.
+   ════════════════════════════════════════════════════════════════ */
 
 #main-lifestyle {
     display: flex;
     flex-direction: column;
 }
+
 #wrapper-lifestyle {
     display: flex;
     flex-direction: row-reverse;
-    /* justify-content: center;
-    align-items: center; */
-     border-bottom: dashed 10px #FFEAD6 ;
+    justify-content: center;
+    align-items: center;
+    border-bottom: dashed 10px #FFEAD6;
+    height: calc(100vh - 85px);
+}
+
+/* Sécurité anti-débordement : n'a aucun effet tant qu'il y a la place,
+   évite juste au texte de déborder hors du conteneur si l'espace manque */
+#wrapper-lifestyle > * {
+    min-width: 0;
 }
 
 .img-lifestyle {
-    max-height:100vh;
+    height: 100%;
+    flex: 0 1 65%;
+    width: 65%;
+    object-fit: cover;
 }
 
 #wrapper-lifestyle h1 {
-    font-size: 3rem;
+    font-size: clamp(1.3rem, 2.5vw, 3rem);
 }
 
 #text-lifestyle {
     display: flex;
     flex-direction: column-reverse;
-    position:relative;
-    right:52px;
-    top:-120px;
+    position: relative;
+    right: 52px;
+    flex: 0 1 35%;
+    width: 35%;
 }
 
 #wrapper-lifestyle h2 {
-    font-size: 7.6rem;
-    font-family:chango;
-}
-
-.section-lifestyle {
-    display:grid;
-    grid-template-columns: 1fr 1.5fr;
-    background-color: #FFEAD6;
-    min-height:700px;
-    max-height:850px;
-    background-image: url("images/bg_section2.jpg");
-    color:#FA230F;
-    align-items: center;
-    margin:0;
-    border-bottom: dashed  10px #FA230F ;
-    border-top: dashed  10px #FA230F ;
-}
-
-.lifestyle-text {
-    width:80%;
-    display:flex;
-    flex-direction: column;
-    margin: 0 auto;
-    gap:1rem;
-}
-
-.lifestyle-text h2 {
-    font-size: 4rem;
+    font-size: clamp(2rem, 6.5vw, 7.6rem);
     font-family: chango;
 }
 
-#lifestyle-team {
-    font-size: 4rem;
-    margin-left:auto;
-    font-family: "Jersey 10";
+.section-lifestyle {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    background-color: #FFEAD6;
+    min-height: 700px;
+    background-image: url("images/bg_section2.jpg");
+    color: #FA230F;
+    align-items: center;
+    margin: 0;
+    border-bottom: dashed 10px #FA230F;
+    border-top: dashed 10px #FA230F;
+}
 
+.section-lifestyle > * {
+    min-width: 0;
+}
+
+.lifestyle-text {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 1rem;
+}
+
+.lifestyle-text h2 {
+    font-size: clamp(1.6rem, 3.5vw, 4rem);
+    font-family: chango;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+#lifestyle-team {
+    font-size: clamp(1.6rem, 3.5vw, 4rem);
+    margin-left: auto;
+    font-family: "Jersey 10";
 }
 
 .lifestyle-text p {
-    font-size : 1.2rem;
+    font-size: clamp(0.95rem, 1.3vw, 1.2rem);
 }
 
-.section-lifestyle img{
-    width:100%
+.section-lifestyle img {
+    width: 100%;
 }
+
+
+/* ════════════════════════════════════════════════════════════════
+   SECTION BRAND (utilisée par index.html)
+   ════════════════════════════════════════════════════════════════ */
 
 #section-brand {
     min-height: 700px;
@@ -395,29 +469,31 @@ footer {
     grid-template-columns: 1fr 1fr;
     align-items: center;
     background-color: #FA230F;
-    
+}
+
+#section-brand > * {
+    min-width: 0;
 }
 
 #brand-column-left {
-    display:flex;
+    display: flex;
     flex-direction: column;
     max-width: 75%;
-    
-    gap:1rem;
-    order:1;
+    gap: 1rem;
+    order: 1;
 }
 
 #brand-column-left h2 {
-    font-size: 6rem;
+    font-size: clamp(1.8rem, 5vw, 6rem);
 }
 
 #brand-column-left p {
-    font-size: 2rem;
+    font-size: clamp(1rem, 2vw, 2rem);
 }
 
 #section-brand img {
-    width: 500px
-
+    width: 500px;
+    max-width: 100%;
 }
 
 #brand-column-right {
@@ -430,52 +506,10 @@ footer {
 
 
 /* ════════════════════════════════════════════════════════════════
-   RESPONSIVE — à ajouter à la fin de global.css
+   RESPONSIVE — NAVBAR UNIQUEMENT
+   (logique inchangée — sera remplacée par un menu burger séparément)
    ════════════════════════════════════════════════════════════════ */
 
-/* ── Tablette (≤ 1024px) ─────────────────────────────────────── */
-@media (max-width: 1024px) {
-  .main-menu {
-    gap: 1.5rem;
-    font-size: 1.1rem;
-  }
-
-  .client-menu {
-    gap: 1.5rem;
-  }
-
-  #section-brand,
-  .section-lifestyle {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-
-  #brand-column-left {
-    max-width: 100%;
-    order: 2;
-    text-align: center;
-    align-items: center;
-  }
-
-  #brand-column-right {
-    margin-left: 0;
-    order: 1;
-  }
-
-  #brand-column-left h2 {
-    font-size: 3.5rem;
-  }
-
-  #brand-column-left p {
-    font-size: 1.3rem;
-  }
-
-  #section-brand img {
-    width: 280px;
-  }
-}
-
-/* ── Mobile large (≤ 768px) ──────────────────────────────────── */
 @media (max-width: 768px) {
   nav {
     flex-wrap: wrap;
@@ -512,19 +546,6 @@ footer {
     font-size: 0.7rem;
   }
 
-  .main-page-wrapper {
-    grid-template-columns: 1fr;
-    margin-top: 0;
-  }
-
-  .auth-card {
-    padding: 24px;
-  }
-
-  .auth-card h1 {
-    font-size: 2.5rem;
-  }
-
   footer {
     flex-direction: column;
     gap: 24px;
@@ -544,52 +565,16 @@ footer {
     height: 120px;
   }
 
-  #wrapper-lifestyle {
-    flex-direction: column;
-    border-bottom: dashed 6px #FFEAD6;
+  .auth-card {
+    padding: 24px;
   }
 
-  #text-lifestyle {
-    position: static;
-    right: 0;
-    top: 0;
-    flex-direction: column;
-    padding: 20px;
-  }
-
-  #wrapper-lifestyle h1 {
-    font-size: 1.8rem;
-  }
-
-  #wrapper-lifestyle h2 {
-    font-size: 3rem;
-  }
-
-  .lifestyle-text {
-    width: 100%;
-    padding: 20px;
-  }
-
-  .lifestyle-text h2 {
+  .auth-card h1 {
     font-size: 2.5rem;
-  }
-
-  #lifestyle-team {
-    font-size: 2.5rem;
-    margin-left: 0;
   }
 }
 
-/* ── Mobile (≤ 480px) ────────────────────────────────────────── */
 @media (max-width: 480px) {
-  .logo {
-    width: 36px;
-  }
-
-  .brand-title {
-    font-size: 1rem;
-  }
-
   .main-menu {
     gap: 0.8rem;
     font-size: 0.85rem;
@@ -612,16 +597,155 @@ footer {
     font-size: 1rem;
     padding: 10px 12px;
   }
+}
 
-  #brand-column-left h2 {
-    font-size: 2.2rem;
+
+/* ════════════════════════════════════════════════════════════════
+   RESPONSIVE — MOBILE UNIQUEMENT (≤ 600px)
+   Seul vrai changement de structure : colonnes → empilement.
+   Les tailles de texte sont déjà gérées en continu par clamp() ci-dessus.
+   ════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 600px) {
+  .menu {
+    justify-content: space-between;
   }
 
-  #brand-column-left p {
-    font-size: 1.1rem;
+  .logo-title {
+    justify-content: flex-start;
+  }
+
+  .logo {
+    width: 64px;
+    margin-left: 0;
+  }
+
+  .brand-title {
+    font-size: 1.5rem;
+  }
+
+  .burger-btn {
+    display: flex;
+  }
+
+  .mobile-nav-panel {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: -85%;
+    width: 85%;
+    max-width: 320px;
+    height: 100vh;
+    background-color: #FA230F;
+    border-left: dashed 6px #F5F0E8;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2.5rem;
+    padding: 100px 24px 24px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+
+  .mobile-nav-panel.is-open {
+    right: 0;
+  }
+
+  .main-menu,
+  .client-menu {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.4rem;
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .main-menu a {
+    font-size: 1.8rem;
+  }
+
+  .nav-icon-link {
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .icon-label {
+    font-size: 1.4rem;
+  }
+
+  .icon {
+    width: 44px;
+  }
+
+  .main-page-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .main-page-wrapper:not(#main-lifestyle) {
+    height: auto;
+  }
+
+  #wrapper-lifestyle {
+    flex-direction: column;
+    border-bottom: dashed 6px #FFEAD6;
+    height: auto;
+  }
+
+  #text-lifestyle {
+    position: static;
+    right: 0;
+    top: 0;
+    flex-direction: column;
+    flex: 0 1 auto;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .img-lifestyle {
+    height: 50vh;
+    flex: 0 1 auto;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .section-lifestyle {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 32px 0;
+  }
+
+  .lifestyle-text {
+    width: 100%;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  #lifestyle-team {
+    margin-left: 0;
+  }
+
+  #section-brand {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 32px 0 48px;
+  }
+
+  #brand-column-left {
+    max-width: 100%;
+    order: 2;
+    text-align: center;
+    align-items: center;
+  }
+
+  #brand-column-right {
+    margin-left: 0;
+    order: 1;
   }
 
   #section-brand img {
-    width: 200px;
+    width: 280px;
   }
 }
