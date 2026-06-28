@@ -10,6 +10,16 @@ const getAll = async (req, res) => {
   }
 };
 
+const getAllAdmin = async (req, res) => {
+  try {
+    const products = await Product.findAllAdmin();
+    res.json(products);
+  } catch (err) {
+    console.error('Erreur getAllAdmin :', err);
+    res.status(500).json({ message: 'Erreur serveur' });
+  }
+};
+
 const getOne = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
@@ -30,12 +40,13 @@ const create = async (req, res) => {
     if (!name || price === undefined || stock === undefined) {
       return res.status(400).json({ message: 'Nom, prix et stock requis' });
     }
+
     if (price <= 0) {
-  return res.status(400).json({ message: 'Le prix doit être supérieur à 0' });
-  }
-  if (stock < 0) {
-  return res.status(400).json({ message: 'Le stock ne peut pas être négatif' });
-  }
+      return res.status(400).json({ message: 'Le prix doit être supérieur à 0' });
+    }
+    if (stock < 0) {
+      return res.status(400).json({ message: 'Le stock ne peut pas être négatif' });
+    }
 
     const id      = await Product.create({ name, slug, category, price, taux_tva, stock, image_url, description });
     const product = await Product.findById(id);
@@ -53,6 +64,13 @@ const update = async (req, res) => {
 
     if (!name || price === undefined || stock === undefined) {
       return res.status(400).json({ message: 'Nom, prix et stock requis' });
+    }
+
+    if (price <= 0) {
+      return res.status(400).json({ message: 'Le prix doit être supérieur à 0' });
+    }
+    if (stock < 0) {
+      return res.status(400).json({ message: 'Le stock ne peut pas être négatif' });
     }
 
     const affected = await Product.update(req.params.id, { name, slug, category, price, taux_tva, stock, is_active, image_url, description });
@@ -76,19 +94,16 @@ const remove = async (req, res) => {
     }
     res.json({ message: 'Produit supprimé' });
   } catch (err) {
+    // Le produit a déjà été commandé : la contrainte de clé étrangère
+    // protège l'intégrité de l'historique des commandes (snapshot pricing)
+    if (err.code === 'ER_ROW_IS_REFERENCED_2' || err.errno === 1451) {
+      return res.status(409).json({
+        message: 'Ce produit a déjà été commandé et ne peut pas être supprimé, pour préserver l\'historique des commandes. Désactivez-le plutôt.',
+      });
+    }
     console.error('Erreur remove produit :', err);
     res.status(500).json({ message: 'Erreur serveur' });
   }
 };
 
-const getAllAdmin = async (req, res) => {
-  try {
-    const products = await Product.findAllAdmin();
-    res.json(products);
-  } catch (err) {
-    console.error('Erreur getAllAdmin :', err);
-    res.status(500).json({ message: 'Erreur serveur' });
-  }
-};
-
-module.exports = { getAll, getOne, create, update, remove, getAllAdmin };
+module.exports = { getAll, getAllAdmin, getOne, create, update, remove };
