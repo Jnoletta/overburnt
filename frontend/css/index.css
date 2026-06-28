@@ -171,8 +171,10 @@
 }
 
 .img-masonry {
-    max-width: 500px;
-    max-height: 500px;
+    flex: 0 1 30%;
+    max-width: 32%;
+    max-height: 320px;
+    object-fit: cover;
 }
 
 #lifestyle-button {
