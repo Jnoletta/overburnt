@@ -9,7 +9,7 @@ jest.mock('../../src/config/db', () => ({
 const pool  = require('../../src/config/db');
 const Order = require('../../src/models/order');
 
-describe('Order.create — transaction et décrémentation du stock', () => {
+describe('Order.create transaction et décrémentation du stock', () => {
   let mockConn;
 
   beforeEach(() => {

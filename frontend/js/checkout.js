@@ -133,12 +133,10 @@ const handleSubmit = async (e) => {
     }
 
     // 4. Sauvegarder l'order_id et rediriger vers Stripe
-    // Le panier est vidé sur la page succès, pas ici
-    // Si l'utilisateur revient en arrière, son panier est préservé
-console.log('order data:', orderData);
-console.log('pending_order_id à sauvegarder:', orderData.order.id);
-localStorage.setItem('pending_order_id', orderData.order.id);
-window.location.href = paymentData.url;
+  console.log('order data:', orderData);
+  console.log('pending_order_id à sauvegarder:', orderData.order.id);
+  localStorage.setItem('pending_order_id', orderData.order.id);
+  window.location.href = paymentData.url;
 
   } catch (err) {
     console.error('Erreur checkout :', err);

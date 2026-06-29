@@ -29,7 +29,7 @@ const createOrder = async (req, res) => {
       customer.country,
     ].filter(Boolean).join(', ');
 
-    // Récupérer les prix depuis la BDD — on ne fait jamais confiance au client
+    // Récupérer les prix depuis la BDD
     const enrichedItems = [];
     let totalCost = 0;
 

@@ -71,8 +71,7 @@ const create = async (customerId, items, totalCost, shippingAddress) => {
         [orderId, item.product_id, item.quantity, item.unit_price, item.taux_tva]
       );
 
-      // La condition "AND stock >= quantity" protège contre la survente
-      // en cas de commandes concurrentes sur le même produit
+      // La condition "AND stock >= quantity" protège contre la survente en cas de commandes concurrentes sur le même produit
       const [stockResult] = await conn.query(
         `UPDATE products SET stock = stock - ?, updated_at = NOW()
          WHERE id = ? AND stock >= ?`,
